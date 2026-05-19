@@ -8,3 +8,4 @@ CREATE TABLE products (
     category VARCHAR(50),
     image_path VARCHAR(255)
 );
+
