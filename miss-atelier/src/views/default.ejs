@@ -11,68 +11,91 @@
 </head>
 <body>
 
-    <div class="site-container">
+<div class="site-container">
 
-        <header class="site-header">
-            <div class="container nav-wrapper">
-                <a href="/" class="brand-logo">Miss Atelier</a>
+    <!-- NAVIGATION -->
+    <header class="site-header">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo">Miss Atelier</a>
 
-                <nav>
-                    <ul class="nav-menu">
-                        <li><a href="/products" class="nav-link">All Products</a></li>
-                        <li><a href="/products?category=ready-to-wear" class="nav-link">Ready To Wear</a></li>
-                        <li><a href="/products?category=patterns" class="nav-link">Knitting Patterns</a></li>
-                        <li><a href="/products?category=yarn" class="nav-link">Yarn & Notions</a></li>
-                    </ul>
-                </nav>
+            <nav>
+                <ul class="nav-center">
+                    <li><a href="/products?category=ready-to-wear" class="nav-link">Ready To Wear</a></li>
+                    <li><a href="/products?category=patterns" class="nav-link">Patterns</a></li>
+                    <li><a href="/products?category=yarn" class="nav-link">Yarn &amp; Notions</a></li>
+                    <li><a href="/about" class="nav-link">About</a></li>
+                    <li><a href="/journal" class="nav-link">Journal</a></li>
+                </ul>
+            </nav>
 
-                <div class="nav-auth">
-                    <a href="/login" class="btn-secondary">Login</a>
-                    <a href="/register" class="btn-secondary">Register</a>
-                </div>
-            </div>
-        </header>
+            <ul class="nav-right">
+                <li><a href="/search" class="nav-utility">&#128269; Search</a></li>
+                <li><a href="/account" class="nav-utility">Account</a></li>
+                <li><a href="/bag" class="nav-utility">Bag (0)</a></li>
+            </ul>
+        </div>
+    </header>
 
-        <main>
+    <!-- MAIN -->
+    <main>
+        <section class="hero-section">
 
-            <section class="hero-section">
-                <div class="container hero-content">
-                    <p class="hero-tagline"><%= tagline %></p>
-                    <h1 class="hero-title"><%= heroTitle %></h1>
-                    <p class="hero-description"><%= heroDescription %></p>
-                </div>
-            </section>
+            <h1 class="hero-headline"><%= heroLine1 %><br><%= heroLine2 %></h1>
 
-            <section class="featured-section">
-                <div class="container">
-                    <h2 class="section-title"><%= featuredSectionTitle %></h2>
+            <div class="hero-grid">
 
-                    <div class="product-grid">
-                        <div class="product-image-wrapper">
-                            <img src="<%= featuredProduct.image %>" alt="<%= featuredProduct.imageAlt %>" class="product-image">
-                        </div>
-
-                        <div class="product-details">
-                            <span class="product-label"><%= featuredProduct.label %></span>
-                            <h3 class="product-name"><%= featuredProduct.name %></h3>
-                            <div class="product-price"><%= featuredProduct.price %></div>
-                            <p class="product-description"><%= featuredProduct.description %></p>
-                            <a href="/products" class="btn-primary">View Collection</a>
-                        </div>
+                <!-- Hero image — left -->
+                <div class="hero-image-wrap">
+                    <img src="<%= hero.image %>" alt="<%= hero.imageAlt %>">
+                    <div class="hero-overlay">
+                        <p class="hero-subtitle"><%= hero.subtitle %></p>
+                        <a href="/products?category=ready-to-wear" class="btn-shop">Shop RTW</a>
                     </div>
                 </div>
-            </section>
 
-        </main>
+                <!-- Category tiles — right -->
+                <div class="hero-tiles">
 
-        <footer class="site-footer">
-            <div class="container footer-wrapper">
-                <div>© <%= new Date().getFullYear() %> Miss Atelier Studio. All rights reserved.</div>
-                <div>Quality over Quantity.</div>
+                    <div class="category-tile">
+                        <div class="tile-image-wrap">
+                            <img src="<%= tiles.patterns.image %>" alt="<%= tiles.patterns.imageAlt %>">
+                        </div>
+                        <div class="tile-label">
+                            <span class="tile-name">Patterns</span>
+                            <a href="/products?category=patterns" class="tile-cta">Download &amp; Create</a>
+                        </div>
+                    </div>
+
+                    <div class="category-tile">
+                        <div class="tile-image-wrap">
+                            <img src="<%= tiles.yarn.image %>" alt="<%= tiles.yarn.imageAlt %>">
+                        </div>
+                        <div class="tile-label">
+                            <span class="tile-name">Yarn</span>
+                            <a href="/products?category=yarn" class="tile-cta">Explore The Fibers</a>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-        </footer>
+        </section>
+    </main>
 
-    </div>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-wrapper">
+            <ul class="footer-nav">
+                <li><a href="/contact" class="footer-link">Contact</a></li>
+                <li><a href="/shipping" class="footer-link">Shipping</a></li>
+                <li><a href="/sustainability" class="footer-link">Sustainability</a></li>
+                <li><a href="https://instagram.com" class="footer-link">Instagram</a></li>
+            </ul>
+            <span class="footer-copy">&copy; <%= new Date().getFullYear() %> Miss Atelier</span>
+        </div>
+    </footer>
+
+</div>
 
 </body>
 </html>
