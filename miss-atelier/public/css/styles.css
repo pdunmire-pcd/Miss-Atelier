@@ -240,10 +240,10 @@ img {
 }
 
 .tile-label {
-    padding: 14px 0 4px;
+    padding: 12px 0 4px;
     display: flex;
-    align-items: baseline;
-    gap: 14px;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .tile-name {
@@ -264,6 +264,7 @@ img {
     text-underline-offset: 3px;
     opacity: 0.7;
     transition: var(--transition);
+    white-space: nowrap;
 }
 
 .tile-cta:hover {
@@ -338,7 +339,11 @@ img {
 
     .hero-tiles {
         grid-template-rows: auto;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .tile-image-wrap {
+        aspect-ratio: 16 / 7;
     }
 
     .hero-headline {

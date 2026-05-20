@@ -8,18 +8,18 @@ router.get("/", (req, res) => {
         heroLine1: "Essential Knitwear.",
         heroLine2: "Crafted For Life.",
         hero: {
-            image: "/images/default.webp",
-            imageAlt: "Miss Atelier — Ready To Wear",
-            subtitle: "Limited runs. Sourced sustainably.\nMade to order."
+            image: "/images/hero-cardigan.jpg",
+            imageAlt: "Miss Atelier — The Atelier Cardigan, ready to wear",
+            subtitle: "Limited runs. Sourced sustainably. Made to order."
         },
         tiles: {
             patterns: {
-                image: "/images/default.webp",
-                imageAlt: "Knitting patterns — download and create"
+                image: "/images/patterns-book.jpg",
+                imageAlt: "Knitting pattern book — The Atelier Cable Sweater"
             },
             yarn: {
-                image: "/images/default.webp",
-                imageAlt: "Luxury yarn and notions"
+                image: "/images/yarn-skeins.jpg",
+                imageAlt: "Luxury yarn skeins sourced by Miss Atelier"
             }
         }
     });
