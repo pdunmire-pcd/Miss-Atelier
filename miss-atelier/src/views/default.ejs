@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1><%= title %></h1>
-            <p><%= subtitle %></p>
-        </div>
+    <div class="site-container">
 
-        <div class="hero-image">
-            <img
-                src="/images/default.webp"
-                alt="Model View Controller Architecture Diagram"
-            />
-        </div>
-    </header>
+        <header class="site-header">
+            <div class="container nav-wrapper">
+                <a href="/" class="brand-logo">Miss Atelier</a>
 
-    <main class="container">
-        <section class="card">
-            <h2>It works!</h2>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/products" class="nav-link">All Products</a></li>
+                        <li><a href="/products?category=ready-to-wear" class="nav-link">Ready To Wear</a></li>
+                        <li><a href="/products?category=patterns" class="nav-link">Knitting Patterns</a></li>
+                        <li><a href="/products?category=yarn" class="nav-link">Yarn & Notions</a></li>
+                    </ul>
+                </nav>
 
-            <p>
-                This page is rendered using <strong>EJS</strong>.
-            </p>
+                <div class="nav-auth">
+                    <a href="/login" class="btn-secondary">Login</a>
+                    <a href="/register" class="btn-secondary">Register</a>
+                </div>
+            </div>
+        </header>
 
-            <ul>
-                <li>Route: <code>/</code></li>
-                <li>View: <code>views/index.ejs</code></li>
-                <li>Rendered by Express</li>
-            </ul>
+        <main>
 
-            <a class="button secondary" href="/page.html">
-                View Static HTML Example →
-            </a>
-        </section>
-    </main>
+            <section class="hero-section">
+                <div class="container hero-content">
+                    <p class="hero-tagline"><%= tagline %></p>
+                    <h1 class="hero-title"><%= heroTitle %></h1>
+                    <p class="hero-description"><%= heroDescription %></p>
+                </div>
+            </section>
 
-    <footer class="footer">
-        <p>Node + Express MVC Starter</p>
-    </footer>
+            <section class="featured-section">
+                <div class="container">
+                    <h2 class="section-title"><%= featuredSectionTitle %></h2>
+
+                    <div class="product-grid">
+                        <div class="product-image-wrapper">
+                            <img src="<%= featuredProduct.image %>" alt="<%= featuredProduct.imageAlt %>" class="product-image">
+                        </div>
+
+                        <div class="product-details">
+                            <span class="product-label"><%= featuredProduct.label %></span>
+                            <h3 class="product-name"><%= featuredProduct.name %></h3>
+                            <div class="product-price"><%= featuredProduct.price %></div>
+                            <p class="product-description"><%= featuredProduct.description %></p>
+                            <a href="/products" class="btn-primary">View Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-wrapper">
+                <div>© <%= new Date().getFullYear() %> Miss Atelier Studio. All rights reserved.</div>
+                <div>Quality over Quantity.</div>
+            </div>
+        </footer>
+
+    </div>
 
 </body>
 </html>
