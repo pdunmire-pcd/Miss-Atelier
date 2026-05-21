@@ -3,9 +3,7 @@ import * as storeController from  '../controllers/shop.controller.js';
 
 const router = Router();
 
-router.get("/", (req, res) => {
-    res.render("store");
-});
+router.get("/", storeController.getStorePage);
 
 router.get("/login", (req, res) => {
     res.render();
