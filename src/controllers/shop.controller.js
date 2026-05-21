@@ -8,18 +8,18 @@ export function getStorePage(req, res) {
         heroLine2: "Handmade Essentials",
         //nested object
         hero: {
-            image: "/images/hero.jpg",
+            image: "/images/hero-cardigan.jpg",
             imageAlt: "Miss Atelier clothing",
             subtitle: "Soft pieces made with care"
         },
         //nested object
         tiles: {
             patterns: {
-                image: "/images/patterns.jpg",
+                image: "/images/patterns-book.jpg",
                 imageAlt: "Patterns"
             },
             yarn: {
-                image: "/images/yarn.jpg",
+                image: "/images/yarn-skeins.jpg",
                 imageAlt: "Yarn"
             }
         }
