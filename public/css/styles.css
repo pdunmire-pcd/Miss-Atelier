@@ -270,6 +270,90 @@ img {
 .tile-cta:hover {
     opacity: 1;
 }
+/*--- Store Description section */
+.store-highlight {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 80px 32px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.store-description {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.store-description img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background-color: #C8C1B4;
+}
+
+.store-description h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.store-description p {
+    max-width: 520px;
+    color: var(--color-muted-text);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* Featured Product */
+.featured-product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.featured-product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background-color: #C8C1B4;
+}
+
+.featured-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.featured-product-info h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.featured-product-info p {
+    color: var(--color-muted-text);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.featured-price {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-charcoal);
+    font-weight: 500;
+    margin-top: 6px;
+}
+
 
 /* --- FOOTER --- */
 .site-footer {
@@ -349,6 +433,19 @@ img {
     .hero-headline {
         font-size: 2.4rem;
     }
+    .store-highlight {
+    grid-template-columns: 1fr;
+    padding: 56px 16px;
+    gap: 40px;
+}
+
+.store-description h2 {
+    font-size: 2.2rem;
+}
+
+.featured-product-info h3 {
+    font-size: 1.7rem;
+}
 
     .site-footer {
         padding: 22px 16px;
