@@ -1,40 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+    <%- include('partials/head') %>
 <body>
 
 <div class="site-container">
 
-    <!-- NAVIGATION -->
-    <header class="site-header">
-        <div class="nav-wrapper">
-            <a href="/" class="brand-logo">Miss Atelier</a>
-
-            <nav>
-                <ul class="nav-center">
-                    <li><a href="/products?category=ready-to-wear" class="nav-link">Ready To Wear</a></li>
-                    <li><a href="/products?category=patterns" class="nav-link">Patterns</a></li>
-                    <li><a href="/products?category=yarn" class="nav-link">Yarn &amp; Notions</a></li>
-                    <li><a href="/about" class="nav-link">About</a></li>
-                    <li><a href="/journal" class="nav-link">Journal</a></li>
-                </ul>
-            </nav>
-
-            <ul class="nav-right">
-                <li><a href="/search" class="nav-utility">Search</a></li>
-                <li><a href="/account" class="nav-utility">Account</a></li>
-                <li><a href="/bag" class="nav-utility">Bag (0)</a></li>
-            </ul>
-        </div>
-    </header>
+    <%- include('partials/nav') %>
 
     <!-- MAIN -->
     <main>
@@ -81,47 +52,28 @@
             </div>
         </section>
 
-    <!-- Store descripton section -->
-    <section class="store-highlight">
-    <div class="store-description">
-        <img
-        src="<%= storeDescription.image%>"
-        alt="<%=storeDescription.name%>">
-          <h2><%= storeDescription.heading %></h2>
-        <p>
-            <%= storeDescription.text %>
-        </p>
-    </div>
+        <!-- Store description section -->
+        <section class="store-highlight">
+            <div class="store-description">
+                <img src="<%= storeDescription.image %>" alt="<%= storeDescription.name %>">
+                <h2><%= storeDescription.heading %></h2>
+                <p><%= storeDescription.text %></p>
+            </div>
 
-    <!-- Product spotlight section -->
-    <div class="featured-product-card">
-        <img
-            src="<%= featuredProduct.image %>"
-            alt="<%= featuredProduct.name %>">
+            <!-- Product spotlight section -->
+            <div class="featured-product-card">
+                <img src="<%= featuredProduct.image %>" alt="<%= featuredProduct.name %>">
+                <div class="featured-product-info">
+                    <h3><%= featuredProduct.name %></h3>
+                    <p><%= featuredProduct.description %></p>
+                    <p class="featured-price"><%= featuredProduct.price %></p>
+                </div>
+            </div>
+        </section>
 
-        <div class="featured-product-info">
-            <h3><%= featuredProduct.name %></h3>
-            <p><%= featuredProduct.description %></p>
-            <p class="featured-price">
-                <%= featuredProduct.price %>
-            </p>
-        </div>
-    </div>
-</section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-wrapper">
-            <ul class="footer-nav">
-                <li><a href="/contact" class="footer-link">Contact</a></li>
-                <li><a href="/shipping" class="footer-link">Shipping</a></li>
-                <li><a href="/sustainability" class="footer-link">Sustainability</a></li>
-                <li><a href="https://instagram.com" class="footer-link">Instagram</a></li>
-            </ul>
-            <span class="footer-copy">&copy; <%= new Date().getFullYear() %> Miss Atelier</span>
-        </div>
-    </footer>
+    <%- include('partials/footer') %>
 
 </div>
 
