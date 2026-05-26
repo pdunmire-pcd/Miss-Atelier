@@ -22,6 +22,19 @@ export function getStorePage(req, res) {
                 image: "/images/yarn-skeins.jpg",
                 imageAlt: "Yarn"
             }
+        },
+           storeDescription: {
+            image: "/images/store-description.jpg",
+            imageAlt: "Miss Atelier boutique interior",
+            heading: "Handmade Style for Soft, Feminine Living",
+            text: "Miss Atelier offers elegant ready-to-wear pieces, crochet patterns, yarn, and sewing notions for people who love timeless handmade fashion."
+        },
+           featuredProduct: {
+            image: "/images/featured-product.jpg",
+            imageAlt: "Placeholder product image",
+            name: "Ivory Crochet Cardigan",
+            description: "A soft, feminine cardigan designed for layering and adding a handmade touch to everyday outfits.",
+            price: "$48.00"
         }
     });
 }
