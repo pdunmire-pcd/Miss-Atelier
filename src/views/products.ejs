@@ -7,7 +7,48 @@
   </title>
 </head>
 <body>
-  <h1>Products</h1>
-  <p>Coming soon...</p>
+  <h1>All Products</h1>
+  <p>Browse our product catalog.</p>
+
+  <section class="products-section">
+    <!-- Filter/Search Bar -->
+    <div class="product-filters">
+      <input type="text" id="search" placeholder="Search products...">
+
+      <select id="category">
+        <option value="">All Categories</option>
+        <option value="Tops">Tops</option>
+        <option value="Bottoms">Bottoms</option>
+        <option value="Accessories">Accessories</option>
+      </select>
+
+      <select id="sort">
+        <option value="">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+      </select>
+
+      <button id="filter-btn">Search</button>
+    </div>
+
+    <!-- Product Listing -->
+    <div class="product-grid" id="product-list">
+      <% products.forEach(product => { %>
+        <div class="product-card">
+          <h3><%= product.name %></h3>
+          <p>$<%= product.price %></p>
+          <p><%= product.category %></p>
+          <p><%= product.description %></p>
+
+          <a href="/products/<%= product.id %>">
+            View Product
+          </a>
+        </div>
+      <% }) %>
+    </div>
+
+  </section>
+
+
 </body>
 </html>

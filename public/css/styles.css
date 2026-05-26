@@ -276,7 +276,7 @@ img {
     margin: 0 auto;
     padding: 80px 32px;
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: center;
 }
@@ -289,7 +289,7 @@ img {
 
 .store-description img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 5;
     object-fit: cover;
     background-color: #C8C1B4;
 }
@@ -320,7 +320,7 @@ img {
 
 .featured-product-card img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 5;
     object-fit: cover;
     background-color: #C8C1B4;
 }
