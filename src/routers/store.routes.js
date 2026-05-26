@@ -31,7 +31,7 @@ router.get("/search", (req, res) => {
     res.render("search");
 });
 
-// Users count dashboard page
+// Users account dashboard page
 router.get("/account", (req, res) => {
     res.render("account");
 });
