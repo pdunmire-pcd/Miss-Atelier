@@ -10,9 +10,7 @@ router.get("/login", (req, res) => {
     res.render("login", { title: "Login" });
 });
 
-router.get("/products", (req, res) => {
-    res.render("products", { title: "Products" });
-});
+router.get("/products", storeController.getProducts);
 
 // Create a new account
 router.get("/register", (req, res) => {

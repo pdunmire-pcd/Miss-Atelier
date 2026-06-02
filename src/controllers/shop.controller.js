@@ -1,4 +1,4 @@
-//place controller functions here...
+import { getAllProducts } from "../services/shop.service.js";
 
 export function getStorePage(req, res) {
     res.render("store", {
@@ -38,4 +38,15 @@ export function getStorePage(req, res) {
         price: "$48.00"
         }
     });
-}
+};
+
+export const getProducts = async (req, res)  => {
+
+    const products = await getAllProducts();
+
+    if (products) {
+        return res.status(200).json(products);
+    } else {
+        return res.status(500);
+    }
+;}
