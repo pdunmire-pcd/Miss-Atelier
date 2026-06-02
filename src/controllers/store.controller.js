@@ -1,4 +1,4 @@
-import { getAllProducts } from "../services/shop.service.js";
+import { getAllProducts } from "../services/store.service.js";
 
 export function getStorePage(req, res) {
     res.render("store", {
@@ -40,13 +40,11 @@ export function getStorePage(req, res) {
     });
 };
 
-export const getProducts = async (req, res)  => {
-
+export const getProducts = async (req, res) => {
     const products = await getAllProducts();
-
     if (products) {
-        return res.status(200).json(products);
+        res.render("products", { title: "Products", products: products });
     } else {
-        return res.status(500);
+        res.status(500).send("Error fetching products");
     }
-;}
+};
