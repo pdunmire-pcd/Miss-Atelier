@@ -1,40 +1,53 @@
+TRUNCATE TABLE products;
+
 INSERT INTO products (product_name, price, description, category, image_path) VALUES
-('Élodie Cashmere Sweater', 128.00, 'A luxurious cashmere sweater with a soft finish and timeless Parisian silhouette.', 'Sweaters', '/images/elodie-sweater.jpg'),
-
-('Camille Knit Cardigan', 118.00, 'An elegant knit cardigan featuring delicate buttons and a relaxed feminine fit.', 'Cardigans', '/images/camille-cardigan.jpg'),
-
-('Amélie Wool Blend Scarf', 72.00, 'A refined wool blend scarf designed for effortless cold-weather layering.', 'Accessories', '/images/amelie-scarf.jpg'),
-
-('Margaux Ribbed Turtleneck', 98.00, 'A fitted ribbed turtleneck crafted with a soft premium knit texture.', 'Sweaters', '/images/margaux-turtleneck.jpg'),
-
-('Geneviève Knit Lounge Set', 156.00, 'A sophisticated knit lounge set designed with comfort and elevated style in mind.', 'Sets', '/images/genevieve-set.jpg'),
-
-('Colette Cashmere Wrap', 88.00, 'A lightweight cashmere wrap perfect for elegant layering throughout the seasons.', 'Accessories', '/images/colette-wrap.jpg'),
-
-('Parisian Knit Midi Dress', 142.00, 'A graceful knit midi dress with a flattering silhouette and soft stretch fabric.', 'Dresses', '/images/parisian-midi.jpg'),
-
-('Juliette Cropped Cardigan', 104.00, 'A chic cropped cardigan inspired by effortless French street style.', 'Cardigans', '/images/juliette-cardigan.jpg'),
-
-('Monaco Knit Trousers', 96.00, 'Tailored knit trousers with a polished drape and comfortable fit.', 'Bottoms', '/images/monaco-trousers.jpg'),
-
-('Rosalie Mohair Sweater', 132.00, 'A soft mohair blend sweater featuring a delicate airy knit texture.', 'Sweaters', '/images/rosalie-sweater.jpg'),
-
-('Luxe Knit Shoulder Bag', 82.00, 'A sophisticated knit shoulder bag designed for minimalist everyday styling.', 'Bags', '/images/luxe-knit-bag.jpg'),
-
-('Céleste Wool Beret', 48.00, 'A classic wool beret inspired by timeless French fashion.', 'Accessories', '/images/celeste-beret.jpg'),
-
-('Chérie Knit Tank', 68.00, 'A refined knit tank top designed for elegant layering and effortless styling.', 'Tops', '/images/cherie-tank.jpg'),
-
-('Antoinette Cashmere Cardigan', 148.00, 'A luxurious cashmere cardigan with a soft drape and polished finish.', 'Cardigans', '/images/antoinette-cardigan.jpg'),
-
-('Saint-Germain Knit Coat', 188.00, 'A structured knit coat blending warmth with sophisticated Paris-inspired style.', 'Outerwear', '/images/saint-germain-coat.jpg'),
-
-('Aurélie Ribbed Knit Dress', 138.00, 'A fitted ribbed knit dress designed with understated elegance.', 'Dresses', '/images/aurelie-dress.jpg'),
-
-('Vienna Cashmere Lounge Pants', 112.00, 'Soft cashmere lounge pants offering both comfort and refined luxury.', 'Bottoms', '/images/vienna-pants.jpg'),
-
-('Noémie Oversized Sweater', 126.00, 'An oversized knit sweater with an elevated relaxed silhouette.', 'Sweaters', '/images/noemie-sweater.jpg'),
-
-('Maison Knit Tote', 74.00, 'A chic knit tote bag crafted for sophisticated everyday use.', 'Bags', '/images/maison-tote.jpg'),
-
-('Louvre Wool Blend Cape', 164.00, 'A refined wool blend cape inspired by classic European winter fashion.', 'Outerwear', '/images/louvre-cape.jpg');
+('Merino Cloud Turtleneck', 485.00, 'An ultra-fine merino wool turtleneck with a relaxed silhouette and ribbed collar that drapes effortlessly for understated luxury.', 'Sweaters', 'https://placehold.co/600x800/e8e0d8/5c5148?text=Merino+Cloud+Turtleneck'),
+('Cashmere Oversized Crewneck', 695.00, 'A generously cut pure cashmere crewneck in a boxy fit, offering unparalleled softness with a deliberately minimal aesthetic.', 'Sweaters', 'https://placehold.co/600x800/d6cfc7/5c5148?text=Cashmere+Crewneck'),
+('Alpaca Blend Open-Front Cardigan', 620.00, 'A floor-grazing open-front cardigan woven from a silk-alpaca blend, featuring subtle drop shoulders and a weightless drape.', 'Cardigans', 'https://placehold.co/600x800/ece6df/5c5148?text=Alpaca+Cardigan'),
+('Chunky Cable-Knit Fisherman Sweater', 540.00, 'A heritage-inspired fisherman sweater rendered in heavyweight British wool with intricate cable patterns across the yoke.', 'Sweaters', 'https://placehold.co/600x800/f0ebe4/5c5148?text=Cable+Knit+Sweater'),
+('Silk-Cashmere Slip Dress', 875.00, 'A bias-cut knit slip dress in a silk-cashmere blend that skims the body with a cool, liquid hand and a subtle luster.', 'Dresses', 'https://placehold.co/600x800/d4cdc6/5c5148?text=Slip+Dress'),
+('Mohair Halo Pullover', 510.00, 'A romantically fuzzy mohair pullover with a soft halo finish, designed in a relaxed V-neck silhouette for effortless elegance.', 'Sweaters', 'https://placehold.co/600x800/e2dbd3/5c5148?text=Mohair+Pullover'),
+('Structured Rib-Knit Blazer', 780.00, 'A tailored rib-knit blazer in virgin wool that bridges sportswear and suiting with clean lapels and a sculpted waist.', 'Outerwear', 'https://placehold.co/600x800/c8c0b8/5c5148?text=Rib+Knit+Blazer'),
+('Fair Isle Intarsia Vest', 395.00, 'A classic Fair Isle vest reinterpreted with a modern, elongated hem and a muted palette of natural Shetland wool hues.', 'Vests', 'https://placehold.co/600x800/e8e0d8/5c5148?text=Fair+Isle+Vest'),
+('Cashmere Ribbed Midi Skirt', 560.00, 'A fine-gauge ribbed cashmere midi skirt with a comfortable elasticated waist and a subtly flared hem.', 'Bottoms', 'https://placehold.co/600x800/dbd4cc/5c5148?text=Cashmere+Skirt'),
+('Merino Wool Polo Neck Dress', 650.00, 'A sleek, long-line merino polo neck dress with a body-conscious fit that transitions seamlessly from desk to dinner.', 'Dresses', 'https://placehold.co/600x800/cec7bf/5c5148?text=Polo+Neck+Dress'),
+('Bouclé Tweed Cropped Jacket', 840.00, 'A cropped knit jacket in a loopy bouclé tweed weave, finished with raw edges and a single mother-of-pearl button closure.', 'Outerwear', 'https://placehold.co/600x800/e4ddd6/5c5148?text=Boucle+Jacket'),
+('Alpaca Wrap Coat', 1450.00, 'An enveloping wrap coat knitted from long-fiber Peruvian alpaca, with a generous shawl collar and deep front pockets.', 'Outerwear', 'https://placehold.co/600x800/d0c8c0/5c5148?text=Alpaca+Wrap+Coat'),
+('Geometric Jacquard Turtleneck', 595.00, 'A tonal jacquard turtleneck featuring an architectural geometric pattern woven in fine merino with a subtle textural contrast.', 'Sweaters', 'https://placehold.co/600x800/e0d8d0/5c5148?text=Jacquard+Turtleneck'),
+('Cashmere Wide-Leg Knit Trousers', 720.00, 'Fluid wide-leg trousers in a fine-gauge cashmere rib that marry the comfort of knitwear with the elegance of tailored trousers.', 'Bottoms', 'https://placehold.co/600x800/d8d0c8/5c5148?text=Knit+Trousers'),
+('Linen-Cotton Openwork Top', 320.00, 'A breathable linen-cotton summer top with delicate eyelet openwork detailing and a relaxed boxy cut.', 'Tops', 'https://placehold.co/600x800/ece6df/5c5148?text=Openwork+Top'),
+('Merino Ribbed Zip-Up', 445.00, 'A sleek half-zip merino pullover with a refined track-inspired silhouette and ultra-fine ribbing throughout.', 'Sweaters', 'https://placehold.co/600x800/e2dbd3/5c5148?text=Merino+Zip+Up'),
+('Cashmere Beanie', 195.00, 'A generously proportioned beanie in two-ply cashmere with a deep cuffed brim for an effortlessly chic cold-weather essential.', 'Accessories', 'https://placehold.co/600x800/d6cfc7/5c5148?text=Cashmere+Beanie'),
+('Oversized Mohair Scarf', 275.00, 'A voluminous, oversized scarf in kid mohair and silk that wraps in a cloud of softness and iridescent warmth.', 'Accessories', 'https://placehold.co/600x800/e8e0d8/5c5148?text=Mohair+Scarf'),
+('Aran Knit Knee-High Socks', 145.00, 'Luxurious knee-high socks in an Aran cable pattern, knitted from soft Falkland Islands merino wool for warmth and texture.', 'Accessories', 'https://placehold.co/600x800/dbd4cc/5c5148?text=Aran+Socks'),
+('Silk-Blend Knit Camisole', 380.00, 'A delicate knit camisole in a silk and viscose blend with thin adjustable straps and a scalloped hemline.', 'Tops', 'https://placehold.co/600x800/f0ebe4/5c5148?text=Knit+Camisole'),
+('Chunky Ribbed Beanie with Pom', 165.00, 'A statement chunky-rib beanie topped with an oversized merino pom-pom, hand-finished in heritage wool.', 'Accessories', 'https://placehold.co/600x800/cec7bf/5c5148?text=Chunky+Beanie'),
+('Cashmere Cable-Knit Gloves', 220.00, 'Refined full-finger gloves in a tight cashmere cable knit with a neat cuff and invisible seaming for a second-skin fit.', 'Accessories', 'https://placehold.co/600x800/e4ddd6/5c5148?text=Cashmere+Gloves'),
+('Alpaca Shawl-Collar Robe Coat', 1295.00, 'A sweeping robe-style coat in brushed alpaca with a dramatic shawl collar, belted waist, and a cocoon silhouette.', 'Outerwear', 'https://placehold.co/600x800/d4cdc6/5c5148?text=Robe+Coat'),
+('Intarsia Floral Merino Pullover', 680.00, 'A fine-gauge merino pullover with an abstract floral intarsia motif in a tonal palette, balancing artistry with wearability.', 'Sweaters', 'https://placehold.co/600x800/e0d8d0/5c5148?text=Floral+Intarsia'),
+('Fine-Gauge Cashmere Tank', 345.00, 'A whisper-thin cashmere tank with a ribbed hem and armholes, the ultimate elevated layer for any season.', 'Tops', 'https://placehold.co/600x800/ece6df/5c5148?text=Cashmere+Tank'),
+('Wool-Blend Knit Pencil Skirt', 490.00, 'A body-skimming pencil skirt in a fine wool-blend rib with a discrete back vent and invisible zip closure.', 'Bottoms', 'https://placehold.co/600x800/d8d0c8/5c5148?text=Knit+Pencil+Skirt'),
+('Cashmere Lounge Set', 960.00, 'A matching two-piece lounge set in pure cashmere jersey, consisting of a cropped top and wide-leg pull-on trousers.', 'Sets', 'https://placehold.co/600x800/e8e0d8/5c5148?text=Cashmere+Lounge+Set'),
+('Merino Polo Shirt', 360.00, 'A fine-gauge merino polo with a classic two-button placket reinterpreted in a modern, slightly elongated hem.', 'Tops', 'https://placehold.co/600x800/d6cfc7/5c5148?text=Merino+Polo'),
+('Textured Bouclé Cardigan', 590.00, 'A hip-length bouclé cardigan with patch pockets and a single-button closure, offering rich texture in a wearable silhouette.', 'Cardigans', 'https://placehold.co/600x800/dbd4cc/5c5148?text=Boucle+Cardigan'),
+('Cashmere Fingerless Mittens', 180.00, 'Elegant fingerless mittens in ribbed cashmere with a convertible mitten flap secured by a small horn button.', 'Accessories', 'https://placehold.co/600x800/c8c0b8/5c5148?text=Fingerless+Mittens'),
+('Sheer Knit Cover-Up Dress', 520.00, 'A semi-sheer fine-knit cover-up dress in a linen-viscose blend with a tiered hem and drawstring waist.', 'Dresses', 'https://placehold.co/600x800/ece6df/5c5148?text=Knit+Cover+Up'),
+('Striped Breton Merino Sweater', 415.00, 'A refined take on the classic Breton stripe in extra-fine merino, with a boat neck and a relaxed yet polished fit.', 'Sweaters', 'https://placehold.co/600x800/e2dbd3/5c5148?text=Breton+Sweater'),
+('Wool Blend Knit Shorts', 380.00, 'Tailored knit shorts in a mid-gauge wool blend with a wide waistband and a clean A-line shape for a chic warm-weather look.', 'Bottoms', 'https://placehold.co/600x800/e4ddd6/5c5148?text=Knit+Shorts'),
+('Cashmere Twinset', 890.00, 'A timeless cashmere twinset pairing a short-sleeve shell with a button-front cardigan in a harmonious ribbed fine gauge.', 'Sets', 'https://placehold.co/600x800/d4cdc6/5c5148?text=Cashmere+Twinset'),
+('Ombré Dip-Dye Alpaca Sweater', 730.00, 'A hand-dipped alpaca sweater with a natural ombré gradient from ivory to deep indigo, made entirely by artisan knitters.', 'Sweaters', 'https://placehold.co/600x800/d0c8c0/5c5148?text=Ombre+Alpaca'),
+('Merino Wool Bodysuit', 395.00, 'A second-skin merino bodysuit with a scoop neck, long sleeves, and a smooth snap-button gusset for a seamless tucked look.', 'Tops', 'https://placehold.co/600x800/d8d0c8/5c5148?text=Merino+Bodysuit'),
+('Patchwork Knit Midi Dress', 980.00, 'An artisan patchwork midi dress combining seven stitch textures in a tonal cream palette for a wearable sculptural statement.', 'Dresses', 'https://placehold.co/600x800/e8e0d8/5c5148?text=Patchwork+Dress'),
+('Ribbed Knee-High Boot Socks', 125.00, 'A slouchy knee-high sock in a bold rib pattern, knitted from a soft merino-nylon blend with a reinforced heel and toe.', 'Accessories', 'https://placehold.co/600x800/cec7bf/5c5148?text=Boot+Socks'),
+('Cashmere Balaclava', 245.00, 'A chic fine-knit cashmere balaclava that covers the head and neck, finished with a delicate shell-stitch edge around the face.', 'Accessories', 'https://placehold.co/600x800/d6cfc7/5c5148?text=Cashmere+Balaclava'),
+('Open-Stitch Linen Summer Sweater', 340.00, 'A breezy open-stitch pullover in washed linen with a wide, off-shoulder neck and relaxed three-quarter sleeves.', 'Sweaters', 'https://placehold.co/600x800/f0ebe4/5c5148?text=Linen+Summer+Sweater'),
+('Cashmere Zip-Up Hoodie', 825.00, 'A refined cashmere hoodie with a full-length YKK zip, kangaroo pocket, and a brushed interior for elevated everyday comfort.', 'Sweaters', 'https://placehold.co/600x800/dbd4cc/5c5148?text=Cashmere+Hoodie'),
+('Wool Knit Maxi Coat', 1680.00, 'A floor-length knit maxi coat in a dense double-faced wool, with a simple belted silhouette and deep turned-up cuffs.', 'Outerwear', 'https://placehold.co/600x800/c8c0b8/5c5148?text=Knit+Maxi+Coat'),
+('Merino Mock-Neck Long Top', 310.00, 'A hip-length merino mock-neck top in a superfine gauge that layers impeccably under blazers or stands elegantly alone.', 'Tops', 'https://placehold.co/600x800/e0d8d0/5c5148?text=Mock+Neck+Top'),
+('Alpaca Ribbed Headband', 110.00, 'A wide, luxuriously soft alpaca headband in a dense 2x2 rib, shaped to sit flat and offer warmth without bulk.', 'Accessories', 'https://placehold.co/600x800/e4ddd6/5c5148?text=Alpaca+Headband'),
+('Cashmere Knit Overshirt', 760.00, 'A loose, button-through knit overshirt in brushed cashmere that reads as a shirt but wears as a cosy lightweight jacket.', 'Outerwear', 'https://placehold.co/600x800/d4cdc6/5c5148?text=Cashmere+Overshirt'),
+('Sculptural Knit Bandeau Top', 295.00, 'An architectural knit bandeau in a structured cotton-merino blend with a raised pleat detail and a self-tie back closure.', 'Tops', 'https://placehold.co/600x800/ece6df/5c5148?text=Knit+Bandeau'),
+('Wool Knit Beret', 175.00, 'A classic French beret reinterpreted in a fine-rib merino knit with a subtle slouch and a discreet logo tab at the band.', 'Accessories', 'https://placehold.co/600x800/d8d0c8/5c5148?text=Knit+Beret'),
+('Fine-Gauge Cashmere Cardigan', 780.00, 'A hip-length button-front cardigan in the finest Scottish cashmere, offered in a spectrum of neutral tones with a relaxed fit.', 'Cardigans', 'https://placehold.co/600x800/e8e0d8/5c5148?text=Fine+Cashmere+Cardigan'),
+('Merino-Silk Wrap Blouse', 465.00, 'A fluid wrap blouse in an ultra-fine merino-silk blend that offers the structure of knitwear with the drape of woven silk.', 'Tops', 'https://placehold.co/600x800/d6cfc7/5c5148?text=Merino+Silk+Wrap'),
+('Heritage Wool Blanket Scarf', 320.00, 'A generously proportioned blanket scarf woven from heritage Jacob wool in a subtle herringbone pattern, finished with hand-knotted fringe.', 'Accessories', 'https://placehold.co/600x800/dbd4cc/5c5148?text=Blanket+Scarf');
