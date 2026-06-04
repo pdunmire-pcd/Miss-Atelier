@@ -12,17 +12,31 @@
 <%- include('partials/nav') %>
 
 <main class="product-detail-page">
-    <a href="/products">← Back to Products</a>
+   <a href="/products" class="back-link">
+    ← Back to Products
+</a>
 
     <section class="product-detail">
         <img src="<%= product.image_path %>" alt="<%= product.product_name %>" class="product-detail-image">
 
-        <div class="product-detail-info">
-            <h1><%= product.product_name %></h1>
-            <p><strong>Category:</strong> <%= product.category %></p>
-            <p><strong>Price:</strong> $<%= product.price %></p>
-            <p><%= product.description %></p>
-        </div>
+      <div class="product-detail-info">
+    <h1><%= product.product_name %></h1>
+
+    <div class="product-category">
+        <%= product.category %>
+    </div>
+
+    <div class="product-price">
+        $<%= product.price %>
+    </div>
+
+    <p class="product-description">
+        <%= product.description %>
+    </p>
+      <button class="btn-add-cart">
+        Add to Bag
+    </button>
+</div>
     </section>
 </main>
 
