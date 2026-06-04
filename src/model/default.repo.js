@@ -6,8 +6,12 @@ export async function getProductById(productId) {
 }
 
 const SORT_MAP = {
-    'price-low':  'price ASC',
-    'price-high': 'price DESC',
+    'price-low':     'price ASC',
+    'price-high':    'price DESC',
+    'name-asc':      'product_name ASC',
+    'name-desc':     'product_name DESC',
+    'category-asc':  'category ASC',
+    'category-desc': 'category DESC',
 };
 
 export async function getAllProducts(filters = {}) {
