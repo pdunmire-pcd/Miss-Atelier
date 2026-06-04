@@ -5,18 +5,36 @@ export async function getProductById(productId) {
     return rows[0];
 }
 
+const SORT_MAP = {
+    'price-low':     'price ASC',
+    'price-high':    'price DESC',
+    'name-asc':      'product_name ASC',
+    'name-desc':     'product_name DESC',
+    'category-asc':  'category ASC',
+    'category-desc': 'category DESC',
+};
+
 export async function getAllProducts(filters = {}) {
     let query = "SELECT * FROM products";
     const params = [];
+    const conditions = [];
 
     if (filters.category) {
-        query += " WHERE category = ?";
+        conditions.push("category = ?");
         params.push(filters.category);
     }
 
     if (filters.maxPrice) {
-        query += filters.category ? " AND price <= ?" : " WHERE price <= ?";
+        conditions.push("price <= ?");
         params.push(filters.maxPrice);
+    }
+
+    if (conditions.length) {
+        query += " WHERE " + conditions.join(" AND ");
+    }
+
+    if (filters.sort && SORT_MAP[filters.sort]) {
+        query += ` ORDER BY ${SORT_MAP[filters.sort]}`;
     }
 
     const [rows] = await pool.query(query, params);
