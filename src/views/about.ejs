@@ -5,14 +5,17 @@
     <%- include('partials/nav') %>
 
     <main class="about-page">
-        <h1>About Miss Atelier</h1>
-
-        <p>
+        <img
+    src="images/group.png"
+    alt="Miss Atelier Collection"
+    class="about-banner"
+/>
+        <h1 class="about-h1">About Miss Atelier</h1>
+        <p class="about-p">
             Welcome to Miss Atelier, where timeless elegance meets modern style.
             We believe fashion should make every woman feel confident, beautiful,
             and effortlessly sophisticated.
         </p>
-
         <p>
             Our collections are carefully curated to bring together quality,
             comfort, and contemporary design. From everyday essentials to
@@ -20,7 +23,7 @@
             inspire confidence and self-expression.
         </p>
 
-        <h2>Our Mission</h2>
+        <h2 class="about-h2">Our Mission</h2>
 
         <p>
             At Miss Atelier, our mission is to provide stylish and accessible
@@ -28,7 +31,7 @@
             welcoming, and inspiring.
         </p>
 
-        <h2>Why Shop With Us?</h2>
+        <h2 class="about-h2">Why Shop With Us?</h2>
 
         <ul>
             <li>Carefully curated collections</li>
@@ -37,6 +40,15 @@
             <li>Customer-focused service</li>
             <li>Fashion that celebrates individuality</li>
         </ul>
+
+        <section class="about-video-section">
+    <h2 class="about-h2">Our Story in Motion</h2>
+
+    <video class="about-video" controls autoplay muted loop>
+        <source src="/videos/289173_medium.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
     </main>
 
     <%- include('partials/footer') %>

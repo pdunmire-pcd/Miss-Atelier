@@ -579,6 +579,70 @@ body > p {
     }
 }
 
+/* About Page */
+.about-page{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 30px;
+}
+.about-h1{
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.about-h2{
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+
+.about-page p{
+    color: var(--color-muted-text);
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+
+}
+
+.about-page ul{
+    font-family: var(--font-serif);
+    margin-top: 20px;
+    padding-left: 24px;
+}
+
+.about-page li{
+    font-family: var(--font-serif);
+    color: var(--color-muted-text);
+    line-height: 2;
+    list-style: none;
+}
+.about-banner {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+}
+
+.about-video-section {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.about-video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
 
 /* --- FOOTER --- */
 .site-footer {
