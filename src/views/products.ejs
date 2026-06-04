@@ -7,8 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- STYLESHEETS -->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/products.css">
+
+    <!-- JAVASCRIPT -->
+     <script src="../../public/js/products.load.js" defer></script>
 </head>
 <body>
 
@@ -19,7 +24,7 @@
   <section class="products-section">
     <!-- Filter/Search Bar -->
     <div class="product-filters">
-      <input type="text" id="search" placeholder="Search products...">
+      <input type="text" id="product-search" placeholder="Search products...">
 
       <select id="category">
         <option value="">All Categories</option>
@@ -30,8 +35,12 @@
 
       <select id="sort">
         <option value="">Sort By</option>
+        <option value="name-asc">Name: Ascending</option>
+        <option value="name-desc">Name: Descending</option>
         <option value="price-low">Price: Low to High</option>
         <option value="price-high">Price: High to Low</option>
+        <option value="category-asc">Category: Ascending</option>
+        <option value="categoty-desc">Category: Descending</option>
       </select>
 
       <button id="filter-btn">Search</button>
