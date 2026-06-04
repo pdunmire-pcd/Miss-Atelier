@@ -42,8 +42,10 @@ export const getProductsPage = async (req, res) => {
 
         res.render("products", {
             title: "Products",
-            products
+            products,
+            category: req.query.category || ""
         });
+
     } catch (err) {
         console.error("Error loading products page:", err);
         res.status(500).send("Error loading products");
