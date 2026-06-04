@@ -19,13 +19,7 @@ router.get("/register", (req, res) => {
     res.render("register", { title: "Create Account" });
 });
 
-router.get("/about", (req, res) => {
-    res.render("about", { title: "About Us" });
-});
-
-router.get("/journal", (req, res) => {
-    res.render("journal", { title: "Journal" });
-});
+router.get("/about", storeController.getAboutPage);
 
 router.get("/search", (req, res) => {
     res.render("search", { title: "Search" });
