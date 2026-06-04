@@ -1,14 +1,26 @@
 const API_URL = "/api/products";
 
+// Grab search button and search input
 const filterButton = document.querySelector("#filter-btn");
-filterButton.addEventListener("click", filterProducts);
+const productSearch = document.querySelector("#product-search");
 
+// Add click event listener + enter event listener for search input
+filterButton.addEventListener("click", filterProducts);
+productSearch.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    filterButton.click();
+  }
+});
+
+// Applies sort, filter, and search API calls
 async function filterProducts() {
 
+    // Grab each input
     const category = document.querySelector("#category").value;
     const sort = document.querySelector("#sort").value;
     const search = document.querySelector("#product-search").value;
 
+    // Add params to url
     const params = new URLSearchParams();
     if (category) params.append("category", category);
     if (sort) params.append("sort", sort);
@@ -16,6 +28,7 @@ async function filterProducts() {
 
     const url = params.toString() ? `${API_URL}?${params.toString()}` : API_URL;
 
+    // API call + error handling
     try {
         const response = await fetch(url);
         const products = await response.json();
@@ -25,11 +38,16 @@ async function filterProducts() {
     }
 }
 
-
+// Reload page with new products
 function reloadProducts(products) {
+
+    // Grab products
     const container = document.getElementById("product-list");
+
+    // Clear inner HTML
     container.innerHTML = "";
 
+    // Replace with new products
     products.forEach(product => {
         container.insertAdjacentHTML("beforeend",
             `<div class="product-card">
