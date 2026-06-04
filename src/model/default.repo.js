@@ -29,6 +29,11 @@ export async function getAllProducts(filters = {}) {
         params.push(filters.maxPrice);
     }
 
+    if (filters.search) {
+        conditions.push("product_name LIKE ?");
+        params.push(`%${filters.search}%`);
+    }
+
     if (conditions.length) {
         query += " WHERE " + conditions.join(" AND ");
     }

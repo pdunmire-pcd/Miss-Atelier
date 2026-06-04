@@ -31,11 +31,38 @@
     </div>
 
     <p class="product-description">
-        <%= product.description %>
-    </p>
-      <button class="btn-add-cart">
-        Add to Bag
-    </button>
+    <%= product.description %>
+</p>
+
+<% if (product.skill_level || product.sizes_included) { %>
+<div class="product-meta">
+    <% if (product.skill_level) { %>
+        <p><strong>Skill Level:</strong> <%= product.skill_level %></p>
+    <% } %>
+    <% if (product.sizes_included) { %>
+        <p><strong>Sizes Included:</strong> <%= product.sizes_included %></p>
+    <% } %>
+</div>
+<% } %>
+
+<% if (product.fiber_content || product.yarn_weight || product.yardage) { %>
+<div class="product-meta">
+    <% if (product.fiber_content) { %>
+        <p><strong>Fiber:</strong> <%= product.fiber_content %></p>
+    <% } %>
+    <% if (product.yarn_weight) { %>
+        <p><strong>Weight:</strong> <%= product.yarn_weight %></p>
+    <% } %>
+    <% if (product.yardage) { %>
+        <p><strong>Yardage:</strong> <%= product.yardage %>m per skein</p>
+    <% } %>
+</div>
+<% } %>
+
+<button class="btn-add-cart">
+    Add to Bag
+</button>
+
 </div>
     </section>
 </main>
