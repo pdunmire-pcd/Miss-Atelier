@@ -1,22 +1,10 @@
-import { sortProducts, getAllProducts} from "../services/store.service.js";
+import { getProducts as fetchProducts } from "../services/default.service.js";
 
 export const getProducts = async (req, res) => {
-    let products = await getAllProducts();
-
-    if (req.query.category) {
-      const category = req.query.category;
-      products = products.filter((p) => p.category === category);
-    }
-
-    if (req.query.sort) {
-      const sort = req.query.sort;
-      products = sortProducts(products);
-    }
-
-    if (products) {
+    try {
+        const products = await fetchProducts(req.query);
         res.status(200).json(products);
-    } else {
-        res.status(500).send("Error fetching products");
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-    
 };

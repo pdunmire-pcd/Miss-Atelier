@@ -13,6 +13,7 @@ app.set("views", "src/views");
 app.use(express.static('public'));
 
 //middleware
+app.set('json spaces', 2);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -1,5 +1,4 @@
 import { Router } from "express";
-import * as productService from "../services/default.service.js";
 import * as storeController from  '../controllers/store.controller.js';
 
 const router = Router();
@@ -44,14 +43,4 @@ router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });
 });
 
-router.get("/api/products", async (req,res)=>{
-    try{
-        const filters = req.query;
-        const products = await productService.getProducts(filters);
-        res.json(products);
-    }catch(err){
-        res.status(500).json({ error: err.message });
-    }
-
-});
 export default router;
