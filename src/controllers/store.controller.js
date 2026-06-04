@@ -1,12 +1,10 @@
-import { getAllProducts } from "../services/store.service.js";
+import { getProducts, getProductById } from "../services/default.service.js";
 
 export function getStorePage(req, res) {
     res.render("store", {
-        //sending data into ejs
         title: "Miss Atelier",
         heroLine1: "Miss Atelier",
         heroLine2: "Handmade Essentials",
-        //nested objects
         hero: {
             image: "/images/hero-cardigan.jpg",
             imageAlt: "Miss Atelier clothing",
@@ -22,29 +20,50 @@ export function getStorePage(req, res) {
                 imageAlt: "Yarn"
             }
         },
-
         storeDescription: {
-        image: "/images/store-description.jpg",
-        imageAlt: "Miss Atelier boutique interior",
-        heading: "Handmade Style for Soft, Everyday Elegance",
-        text: "Miss Atelier offers elegant ready-to-wear pieces, crochet patterns, yarn, and sewing notions for people who love timeless handmade fashion."
+            image: "/images/store-description.jpg",
+            imageAlt: "Miss Atelier boutique interior",
+            heading: "Handmade Style for Soft, Everyday Elegance",
+            text: "Miss Atelier offers elegant ready-to-wear pieces, crochet patterns, yarn, and sewing notions for people who love timeless handmade fashion."
         },
-        
         featuredProduct: {
-        image: "/images/featured-product.jpg",
-        imageAlt: "Placeholder product image",
-        name: "Ivory Crochet Cardigan",
-        description: "A soft cream cardigan designed for layering and adding a handcrafted touch to everyday outfits.",
-        price: "$48.00"
+            image: "/images/featured-product.jpg",
+            imageAlt: "Placeholder product image",
+            name: "Ivory Crochet Cardigan",
+            description: "A soft cream cardigan designed for layering and adding a handcrafted touch to everyday outfits.",
+            price: "$48.00"
         }
     });
+}
+
+export const getProductsPage = async (req, res) => {
+    try {
+        const products = await getProducts(req.query);
+
+        res.render("products", {
+            title: "Products",
+            products
+        });
+    } catch (err) {
+        console.error("Error loading products page:", err);
+        res.status(500).send("Error loading products");
+    }
 };
 
-export const getProducts = async (req, res) => {
-    const products = await getAllProducts();
-    if (products) {
-        res.render("products", { title: "Products", products: products });
-    } else {
-        res.status(500).send("Error fetching products");
+export const getProductDetailPage = async (req, res) => {
+    try {
+        const product = await getProductById(req.params.id);
+
+        if (!product) {
+            return res.status(404).send("Product not found");
+        }
+
+        return res.render("product-detail", {
+            title: product.product_name,
+            product
+        });
+    } catch (err) {
+        console.error("Error loading product detail page:", err);
+        return res.status(500).send("Error loading product detail");
     }
 };
