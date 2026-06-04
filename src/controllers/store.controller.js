@@ -67,3 +67,9 @@ export const getProductDetailPage = async (req, res) => {
         return res.status(500).send("Error loading product detail");
     }
 };
+
+export const getAboutPage = (req, res) => {
+    res.render('about', {
+        title: 'About Miss Atelier'
+    });
+};
