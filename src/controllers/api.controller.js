@@ -1,6 +1,3 @@
-
-import { sortProducts} from "../services/store.service.js";
-
 import { getProducts as fetchProducts } from "../services/default.service.js";
 
 

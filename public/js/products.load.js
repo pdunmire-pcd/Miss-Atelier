@@ -4,21 +4,15 @@ const filterButton = document.querySelector("#filter-btn");
 filterButton.addEventListener("click", filterProducts);
 
 async function filterProducts() {
+
     const category = document.querySelector("#category").value;
     const sort = document.querySelector("#sort").value;
+    const search = document.querySelector("#product-search").value;
 
-  // test
-  console.log("Filtering products");
-
-  // Grab filter elemenst
-  const filterElements = 
-      [document.querySelector("#product-search"), 
-      document.querySelector("#category"), 
-      document.querySelector("#sort")]
-      
     const params = new URLSearchParams();
     if (category) params.append("category", category);
     if (sort) params.append("sort", sort);
+    if (search) params.append("search", search);
 
     const url = params.toString() ? `${API_URL}?${params.toString()}` : API_URL;
 
@@ -30,6 +24,7 @@ async function filterProducts() {
         console.error("Error fetching products:", err);
     }
 }
+
 
 function reloadProducts(products) {
     const container = document.getElementById("product-list");
