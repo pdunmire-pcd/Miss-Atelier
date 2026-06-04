@@ -1,4 +1,4 @@
-import { sortProducts, getAllProducts } from "../services/store.service.js";
+import { sortProducts, getAllProducts} from "../services/store.service.js";
 
 export const getProducts = async (req, res) => {
     let products = await getAllProducts();
