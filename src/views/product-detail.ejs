@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/products.css">
+</head>
+<body>
+
+<%- include('partials/nav') %>
+
+<main class="product-detail-page">
+    <a href="/products">← Back to Products</a>
+
+    <section class="product-detail">
+        <img src="<%= product.image_path %>" alt="<%= product.product_name %>" class="product-detail-image">
+
+        <div class="product-detail-info">
+            <h1><%= product.product_name %></h1>
+            <p><strong>Category:</strong> <%= product.category %></p>
+            <p><strong>Price:</strong> $<%= product.price %></p>
+            <p><%= product.description %></p>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>
