@@ -6,6 +6,10 @@ CREATE TABLE products (
     price DECIMAL(10, 2) NOT NULL,
     description TEXT,
     category VARCHAR(50),
-    image_path VARCHAR(255)
+    image_path VARCHAR(255),
+    skill_level VARCHAR(50),
+    sizes_included VARCHAR(100),
+    fiber_content VARCHAR(100),
+    yarn_weight VARCHAR(50),
+    yardage INT
 );
-
