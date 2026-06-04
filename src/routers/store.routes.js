@@ -11,7 +11,8 @@ router.get("/login", (req, res) => {
     res.render("login", { title: "Login" });
 });
 
-router.get("/products", storeController.getProducts);
+router.get("/products", storeController.getProductsPage);
+router.get("/products/:id", storeController.getProductDetailPage);
 
 // Create a new account
 router.get("/register", (req, res) => {
