@@ -8,6 +8,9 @@ filterButton.addEventListener("click", filterProducts);
 
 async function filterProducts() {
 
+  // test
+  console.log("Filtering products");
+
   // Grab filter elemenst
   const filterElements = 
       [document.querySelector("#product-search"), 
