@@ -44,6 +44,8 @@ function reloadProducts(products) {
     // Grab products
     const container = document.getElementById("product-list");
 
+    container.style.display = "grid";
+
     // Clear inner HTML
     container.innerHTML = "";
 
@@ -60,4 +62,13 @@ function reloadProducts(products) {
             </div>`
         );
     });
+
+    if (container.innerHTML == "") {
+      container.insertAdjacentHTML("beforeend", 
+        `<div id="no-items">No items found. Search again?</div>`
+      )
+
+      container.style.display = "block";
+    };
+
 }
