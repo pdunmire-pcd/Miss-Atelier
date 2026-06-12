@@ -34,7 +34,9 @@ router.get("/search", (req, res) => {
 
 // Accessing bag
 router.get("/bag", (req, res) => {
-    res.render("bag", { title: "Shopping Bag" });
+    const cart = req.session.cart || [];
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    res.render("bag", { title: "Shopping Bag", cartItems: cart, subtotal });
 });
 
 // Adding + removing items from bag
