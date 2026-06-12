@@ -1,9 +1,16 @@
 import express from 'express';
 import defaultRouter from './routers/store.routes.js';
 import apiRouter from './routers/api.routes.js';
+import session from 'express-session';
 
 //configure Express.js app
 const app = express();
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } 
+}));
 
 //view engine
 app.set("view engine", "ejs");
