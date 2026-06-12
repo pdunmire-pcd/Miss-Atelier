@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as storeController from  '../controllers/store.controller.js';
 import * as authcontroller from '../controllers/auth.controller.js';
+import * as bagController from '../controllers/bag.controller.js';
 
 const router = Router();
 
@@ -32,9 +33,14 @@ router.get("/search", (req, res) => {
     res.render("search", { title: "Search" });
 });
 
+// Accessing bag
 router.get("/bag", (req, res) => {
     res.render("bag", { title: "Shopping Bag" });
 });
+
+// Adding + removing items from bag
+router.post('/bag/add', bagController.addToBag);
+router.post('/bag/remove/:id', bagController.removeFromBag);
 
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });
