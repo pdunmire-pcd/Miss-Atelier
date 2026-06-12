@@ -71,6 +71,8 @@ DB_PORT=3306
 DB_USER=missatelier
 DB_PASSWORD=your_password
 DB_NAME=miss_atelier
+
+SESSION_SECRET=your_session_secret
 ```
 
 ### 3. Set up the database
@@ -83,7 +85,7 @@ mysql -u root -p miss_atelier < scripts/schema.sql
 mysql -u root -p miss_atelier < scripts/seed.sql
 ```
 
-- `scripts/schema.sql` creates the `products` table.
+- `scripts/schema.sql` creates the `products` and `users` tables.
 - `scripts/seed.sql` populates it with sample knitwear products.
 
 ### 4. Run the app
@@ -153,7 +155,10 @@ Router → Controller → Service → Repository (Model) → MySQL
 | GET    | `/search`       | Search page                     |
 | GET    | `/contact`      | Contact page                    |
 | GET    | `/login`        | Login page                      |
+| POST   | `/login`        | Authenticate user, set session  |
 | GET    | `/register`     | Create account page             |
+| POST   | `/register`     | Hash password, create user      |
+| POST   | `/logout`       | Destroy session, redirect to /  |
 | GET    | `/account`      | Account dashboard               |
 | GET    | `/bag`          | Shopping bag                    |
 
@@ -170,6 +175,32 @@ Router → Controller → Service → Repository (Model) → MySQL
 - `search` — match against product name
 - `sort` — one of `price-low`, `price-high`, `name-asc`, `name-desc`,
   `category-asc`, `category-desc`
+
+---
+
+## Authentication
+
+Session-based authentication is implemented using `express-session` and `bcrypt`.
+
+**Register flow:**
+1. User submits email + password via `POST /register`
+2. Server checks the email is not already taken
+3. Password is hashed with bcrypt (never stored as plaintext)
+4. New user row is inserted into the `users` table
+5. User is redirected to `/login`
+
+**Login flow:**
+1. User submits email + password via `POST /login`
+2. Server looks up the user by email
+3. `bcrypt.compare()` verifies the password against the stored hash
+4. On success, `req.session.userId` is set and user is redirected to `/account`
+5. On failure, the login form is re-rendered with an error message
+
+**Logout flow:**
+1. `POST /logout` calls `req.session.destroy()`
+2. User is redirected to `/`
+
+Passwords are hashed using bcrypt with 10 salt rounds. Sessions are signed with `SESSION_SECRET` from the environment to prevent cookie tampering.
 
 ---
 
