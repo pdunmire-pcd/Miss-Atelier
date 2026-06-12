@@ -1,0 +1,331 @@
+/* =============================================
+   BAG PAGE
+   ============================================= */
+
+/* --- Page Container --- */
+.bag-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 32px 100px;
+}
+
+.bag-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 56px;
+}
+
+/* --- Two-Column Layout --- */
+.bag-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 64px;
+    align-items: start;
+}
+
+/* --- Item List --- */
+.bag-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.bag-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--color-border);
+    align-items: start;
+}
+
+.bag-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.bag-item-image-wrap {
+    width: 140px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background-color: #C8C1B4;
+    flex-shrink: 0;
+}
+
+.bag-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bag-item:hover .bag-item-image {
+    transform: scale(1.03);
+}
+
+.bag-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 175px;
+}
+
+.bag-item-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bag-item-category {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted-text);
+}
+
+.bag-item-name {
+    font-family: var(--font-serif);
+    font-size: 1.55rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-charcoal);
+}
+
+.bag-item-price {
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--color-charcoal);
+    margin-top: 4px;
+}
+
+/* --- Quantity + Remove Row --- */
+.bag-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.bag-qty-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
+}
+
+.bag-qty-btn {
+    width: 34px;
+    height: 34px;
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--color-charcoal);
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bag-qty-btn:hover {
+    background-color: var(--color-sand);
+}
+
+.bag-qty-value {
+    width: 36px;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    line-height: 34px;
+    display: inline-block;
+}
+
+.bag-remove-form {
+    margin: 0;
+    padding: 0;
+}
+
+.bag-remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted-text);
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.bag-remove-btn:hover {
+    color: var(--color-charcoal);
+    border-bottom-color: var(--color-charcoal);
+}
+
+/* --- Order Summary Panel --- */
+.bag-summary {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 36px 32px 40px;
+    position: sticky;
+    top: 96px; /* clears the sticky nav */
+}
+
+.bag-summary-heading {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+    color: var(--color-charcoal);
+}
+
+.bag-summary-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bag-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.88rem;
+    color: var(--color-charcoal);
+}
+
+.bag-summary-note {
+    font-size: 0.78rem;
+    color: var(--color-muted-text);
+    font-style: italic;
+}
+
+.bag-summary-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: 24px 0;
+}
+
+.bag-summary-total {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+}
+
+.btn-checkout {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-charcoal);
+    color: var(--color-white);
+    padding: 14px 24px;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    border: 1px solid var(--color-charcoal);
+    transition: var(--transition);
+}
+
+.btn-checkout:hover {
+    background-color: transparent;
+    color: var(--color-charcoal);
+}
+
+.btn-shop {
+    align-self: center;
+}
+
+.bag-continue-link {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted-text);
+    transition: var(--transition);
+}
+
+.bag-continue-link:hover {
+    color: var(--color-charcoal);
+}
+
+/* --- Empty State --- */
+.bag-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 32px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    gap: 10px;
+}
+
+.bag-empty-message {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-charcoal);
+}
+
+.bag-empty-sub {
+    color: var(--color-muted-text);
+    font-size: 0.95rem;
+    font-weight: 300;
+    margin-bottom: 24px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .bag-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .bag-summary {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .bag-page {
+        padding: 40px 16px 72px;
+    }
+
+    .bag-heading {
+        font-size: 2.4rem;
+        margin-bottom: 36px;
+    }
+
+    .bag-item {
+        grid-template-columns: 100px 1fr;
+        gap: 18px;
+    }
+
+    .bag-item-image-wrap {
+        width: 100px;
+    }
+
+    .bag-item-name {
+        font-size: 1.25rem;
+    }
+
+    .bag-summary {
+        padding: 28px 20px 32px;
+    }
+}
