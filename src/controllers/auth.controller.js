@@ -1,7 +1,7 @@
 import { registerUser, loginUser } from '../services/user.service.js';
 
 export function getRegister(req, res) {
-    res.render('register', {error: null});
+    res.render('register', {title: 'Create Account', error: null});
 }
 
 export async function postRegister(req, res) {
@@ -10,12 +10,12 @@ export async function postRegister(req, res) {
         await registerUser(email, password);
         res.redirect('/login');
     } catch (err) {
-        res.render('register', { error: err.message });
+        res.render('register', { title: 'Create Account', error: err.message });
     }
 }
 
 export function getLogin(req, res) {
-    res.render('login', {error: null});
+    res.render('login', { title: 'Login', error: null });
 }
 
 export async function postLogin(req, res) {
@@ -25,7 +25,7 @@ export async function postLogin(req, res) {
         req.session.userId = user.id;
         res.redirect('/account');
     } catch (err) {
-        res.render('login', { error: err.message });
+        res.render('login', { title: 'Login', error: err.message });
     }
 }
 
