@@ -28,7 +28,7 @@ export const addToBag = async (req, res) => {
         });
     }
 
-    res.redirect('/bag');
+    return res.redirect('/bag');
 };
 
 export const removeFromBag = (req, res) => {
