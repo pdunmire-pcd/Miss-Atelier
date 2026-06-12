@@ -34,3 +34,7 @@ export function logout(req, res) {
         res.redirect('/');
     });
 }
+
+export function getAccount(req, res) {
+    res.render('account', { title: 'My Account', userId: req.session.userId });
+}

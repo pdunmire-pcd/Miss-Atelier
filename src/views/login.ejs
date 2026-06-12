@@ -4,25 +4,31 @@
 <body>
   <%- include('partials/nav') %>
   <main>
-    <h1>Login</h1>
+    <div class="auth-page">
+      <h1>Login</h1>
+      <p class="auth-subtitle">Welcome back.</p>
 
-    <% if (error) { %>
-        <p style="color: red;"><%= error %></p>
-    <% } %>
+      <% if (error) { %>
+        <div class="auth-error"><%= error %></div>
+      <% } %>
 
-    <form action="/login" method="POST">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+      <form class="auth-form" action="/login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
 
-        <button type="submit">Log In</button>
-    </form>
+        <button type="submit" class="btn-auth">Sign In</button>
+      </form>
 
-    <p>Don't have an account? <a href="/register">Register</a></p>
-</main>
-
+      <p class="auth-switch">Don't have an account? <a href="/register">Create one</a></p>
+    </div>
+  </main>
   <%- include('partials/footer') %>
 </body>
 </html>

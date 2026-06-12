@@ -5,11 +5,28 @@
     <%- include('partials/nav') %>
 
     <main>
-        <h1>My Account</h1>
+        <div class="account-page">
+            <h1>My Account</h1>
 
-        <a href="/login">Login</a>
-        <br>
-        <a href="/register">Create Account</a>
+            <% if (userId) { %>
+                <div class="account-welcome">
+                    <p>You are signed in.</p>
+                    <div class="account-actions">
+                        <form action="/logout" method="POST">
+                            <button type="submit" class="btn-logout">Sign Out</button>
+                        </form>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="account-guest">
+                    <p>Sign in to access your account, order history, and saved items.</p>
+                    <div class="account-guest-actions">
+                        <a href="/login" class="btn-auth">Sign In</a>
+                        <a href="/register" class="btn-logout">Create Account</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
     </main>
     <%- include('partials/footer') %>
 

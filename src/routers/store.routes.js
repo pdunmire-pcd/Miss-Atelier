@@ -21,10 +21,7 @@ router.get("/search", (req, res) => {
     res.render("search", { title: "Search" });
 });
 
-// Users account dashboard page
-router.get("/account", (req, res) => {
-    res.render("account", { title: "Account" });
-});
+router.get("/account", authcontroller.getAccount);
 
 router.get("/bag", (req, res) => {
     res.render("bag", { title: "Shopping Bag" });
