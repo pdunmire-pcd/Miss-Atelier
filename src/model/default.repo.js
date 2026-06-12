@@ -45,3 +45,4 @@ export async function getAllProducts(filters = {}) {
     const [rows] = await pool.query(query, params);
     return rows;
 }
+
