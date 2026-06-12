@@ -23,9 +23,10 @@
 
 body {
     background-color: var(--color-sand);
-    color: var(--color-charcoal);
+    color: var(--/product-detailcolor-charcoal);
     font-family: var(--font-sans);
     font-size: 16px;
+    height: 100vh;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
@@ -358,6 +359,7 @@ img {
 .products-section {
     max-width: 1440px;
     margin: 0 auto;
+    min-height: 20rem; /* Fixes vertical shrink on product pages */
     padding: 48px 32px 80px;
 }
 
