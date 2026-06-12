@@ -28,7 +28,6 @@ router.get("/about", storeController.getAboutPage);
 router.get("/products", storeController.getProductsPage);
 router.get("/products/:id", storeController.getProductDetailPage);
 
-
 router.get("/search", (req, res) => {
     res.render("search", { title: "Search" });
 });
