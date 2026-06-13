@@ -1,27 +1,27 @@
 const CART_API = "/api/cart";
-
+ 
 document.addEventListener("DOMContentLoaded", () => {
-    loadCart();
     wireAddToCartButtons();
+ 
+    if (document.getElementById("bag-content")) {
+        loadCart();
+    }
 });
-
-// ---- Fetch + render ----
+ 
+// ---- Fetch + render (only used on /bag) ----
 async function loadCart() {
     try {
         const res = await fetch(CART_API);
         const data = await res.json();
-        updateBagCount(data.cart);
-        if (document.getElementById("bag-content")) {
-            renderBag(data);
-        }
+        renderBag(data);
     } catch (err) {
         console.error("Error loading cart:", err);
     }
 }
-
+ 
 function renderBag({ cart, subtotal }) {
     const container = document.getElementById("bag-content");
-
+ 
     if (!cart || cart.length === 0) {
         container.innerHTML = `
             <div class="bag-empty">
@@ -32,7 +32,7 @@ function renderBag({ cart, subtotal }) {
         `;
         return;
     }
-
+ 
     const itemsHTML = cart.map(item => `
         <div class="bag-item" data-id="${item.id}">
             <div class="bag-item-image-wrap">
@@ -51,7 +51,7 @@ function renderBag({ cart, subtotal }) {
             </div>
         </div>
     `).join("");
-
+ 
     container.innerHTML = `
         <div class="bag-layout">
             <div class="bag-items">${itemsHTML}</div>
@@ -61,70 +61,60 @@ function renderBag({ cart, subtotal }) {
                     <span>Total</span>
                     <span>$${subtotal.toFixed(2)}</span>
                 </div>
-                <button id="clear-cart-btn" class="bag-continue-link">Clear Bag</button>
                 <a href="/products" class="bag-continue-link">← Continue Shopping</a>
             </aside>
         </div>
     `;
-
-    // Wire up remove buttons
+ 
     container.querySelectorAll(".bag-remove-btn").forEach(btn => {
         btn.addEventListener("click", () => removeFromCart(btn.dataset.id));
     });
-
-    document.getElementById("clear-cart-btn")
-        .addEventListener("click", clearCart);
 }
-
+ 
 // ---- Mutations ----
 async function addToCart(productId) {
+    console.log("Adding product:", productId);
     try {
         const res = await fetch(`${CART_API}/items`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ productId }),
         });
-
+ 
         if (!res.ok) {
             const err = await res.json();
             console.error(err.error);
             return;
         }
-
-        loadCart(); // re-fetch and re-render
+ 
+        if (document.getElementById("bag-content")) {
+            loadCart();
+        }
     } catch (err) {
         console.error("Error adding to cart:", err);
     }
 }
-
+ 
 async function removeFromCart(productId) {
     try {
         const res = await fetch(`${CART_API}/items/${productId}`, {
             method: "DELETE",
         });
-
+ 
         if (!res.ok) {
             const err = await res.json();
             console.error(err.error);
             return;
         }
-
+ 
         loadCart();
     } catch (err) {
         console.error("Error removing item:", err);
     }
 }
-
-async function clearCart() {
-    try {
-        await fetch(`${CART_API}/clear`, { method: "POST" });
-        loadCart();
-    } catch (err) {
-        console.error("Error clearing cart:", err);
-    }
-}
-
-export function wireAddToCartButtons() {
+ 
+// ---- Helpers ----
+function wireAddToCartButtons() {
     document.querySelectorAll(".btn-add-cart").forEach(btn => {
         btn.addEventListener("click", () => addToCart(btn.dataset.productId));
     });

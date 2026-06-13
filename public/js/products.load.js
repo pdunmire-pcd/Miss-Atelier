@@ -1,5 +1,3 @@
-import { wireAddToCartButtons } from "./cart";
-
 const API_URL = "/api/products";
 
 // Grab search button and search input
