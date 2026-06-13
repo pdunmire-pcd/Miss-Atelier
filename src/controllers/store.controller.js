@@ -70,6 +70,9 @@ export const getProductDetailPage = async (req, res) => {
   }
 };
 
+// GET /bag (SSR page shell — content is populated client-side via /api/cart)
+export const getBagPage = (req, res) => res.render("bag", { title: "Shopping Bag" });
+
 export const getAboutPage = (req, res) => {
   res.render("about", {
     title: "About Miss Atelier",

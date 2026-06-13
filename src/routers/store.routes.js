@@ -1,7 +1,6 @@
 import { Router } from "express";
 import * as storeController from  '../controllers/store.controller.js';
 import * as authcontroller from '../controllers/auth.controller.js';
-import * as bagController from '../controllers/bag.controller.js';
 
 const router = Router();
 
@@ -33,7 +32,7 @@ router.get("/search", (req, res) => {
 });
 
 // Accessing cart
-router.get("/bag", bagController.getBagPage);
+router.get("/bag", storeController.getBagPage);
 
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });
