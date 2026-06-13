@@ -167,6 +167,9 @@ Router → Controller → Service → Repository (Model) → MySQL
 | Method | Path            | Description              |
 | ------ | --------------- | ------------------------ |
 | GET    | `/api/products` | Returns products as JSON |
+| GET    | `/api/cart    ` | Returns cart items as JSON |
+| GET    | `/api/products` | Returns products as JSON |
+| GET    | `/api/products` | Returns products as JSON |
 
 **Query parameters** (supported on `/products` and `/api/products`):
 

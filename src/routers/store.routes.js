@@ -32,11 +32,10 @@ router.get("/search", (req, res) => {
     res.render("search", { title: "Search" });
 });
 
-// Accessing bag
+// Accessing cart
 router.get("/bag", bagController.getBagPage);
-router.post('/bag/add', bagController.addItemSSR);
-router.post('/bag/remove/:id', bagController.removeItemSSR);
-
+router.post('/bag/items', bagController.addItemSSR);
+router.delete('/bag/items/:id', bagController.removeItemSSR);
 
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });

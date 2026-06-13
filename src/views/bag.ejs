@@ -60,7 +60,7 @@
                                         >+</button>
                                     </div>
 
-                                    <form action="/bag/remove/<%= item.id %>" method="POST" class="bag-remove-form">
+                                    <form action="/bag/items/<%= item.id %>?_method=DELETE" method="POST">
                                         <button type="submit" class="bag-remove-btn">Remove</button>
                                     </form>
                                 </div>
