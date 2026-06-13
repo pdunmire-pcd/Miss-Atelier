@@ -61,7 +61,7 @@
       <% products.forEach(product => { %>
         <div class="product-card">
           <img src="<%= product.image_path %>" class="product-image" alt="<%= product.product_name %>">
-<h3><%= product.product_name %></h3>
+          <h3><%= product.product_name %></h3>
 
           <p>$<%= product.price %></p>
           <p><%= product.category %></p>
@@ -70,6 +70,7 @@
           <a href="/products/<%= product.id %>">
             View Product
           </a>
+          <button class="btn-add-cart" data-product-id="<%= product.id %>">Add to Cart</button>
         </div>
       <% }) %>
     </div>

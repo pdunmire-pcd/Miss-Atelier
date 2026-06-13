@@ -34,8 +34,6 @@ router.get("/search", (req, res) => {
 
 // Accessing cart
 router.get("/bag", bagController.getBagPage);
-router.post('/bag/items', bagController.addItemSSR);
-router.delete('/bag/items/:id', bagController.removeItemSSR);
 
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });

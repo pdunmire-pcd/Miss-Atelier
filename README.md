@@ -161,15 +161,17 @@ Router → Controller → Service → Repository (Model) → MySQL
 | POST   | `/logout`       | Destroy session, redirect to /  |
 | GET    | `/account`      | Account dashboard               |
 | GET    | `/bag`          | Shopping bag                    |
+| GET    | `/bag`          | Shopping bag                    |
 
 ### API
 
-| Method | Path            | Description              |
-| ------ | --------------- | ------------------------ |
-| GET    | `/api/products` | Returns products as JSON |
-| GET    | `/api/cart    ` | Returns cart items as JSON |
-| GET    | `/api/products` | Returns products as JSON |
-| GET    | `/api/products` | Returns products as JSON |
+| Method | Path                     | Description              |
+| ------ | ------------------------ | ------------------------ |
+| GET    | `/products`              | Returns products as JSON |
+| GET    | `/cart`                  | Returns items in cart    |
+| POST   | `/cart/items`            | Adds item to cart        |
+| DELETE | `/cart/items/:productId` | Deletes items from cart  |
+| POST   | `/cart/clear`            | Clears items from cart   |
 
 **Query parameters** (supported on `/products` and `/api/products`):
 

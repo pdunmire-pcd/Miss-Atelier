@@ -1,0 +1,131 @@
+const CART_API = "/api/cart";
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadCart();
+    wireAddToCartButtons();
+});
+
+// ---- Fetch + render ----
+async function loadCart() {
+    try {
+        const res = await fetch(CART_API);
+        const data = await res.json();
+        updateBagCount(data.cart);
+        if (document.getElementById("bag-content")) {
+            renderBag(data);
+        }
+    } catch (err) {
+        console.error("Error loading cart:", err);
+    }
+}
+
+function renderBag({ cart, subtotal }) {
+    const container = document.getElementById("bag-content");
+
+    if (!cart || cart.length === 0) {
+        container.innerHTML = `
+            <div class="bag-empty">
+                <p class="bag-empty-message">Your bag is empty.</p>
+                <p class="bag-empty-sub">Add a piece to begin.</p>
+                <a href="/products" class="btn-shop">Shop the Collection</a>
+            </div>
+        `;
+        return;
+    }
+
+    const itemsHTML = cart.map(item => `
+        <div class="bag-item" data-id="${item.id}">
+            <div class="bag-item-image-wrap">
+                <img src="${item.image_url}" alt="${item.name}" class="bag-item-image">
+            </div>
+            <div class="bag-item-details">
+                <div class="bag-item-meta">
+                    <span class="bag-item-category">${item.category}</span>
+                    <h2 class="bag-item-name">${item.name}</h2>
+                    <p class="bag-item-price">$${item.price.toFixed(2)}</p>
+                </div>
+                <div class="bag-item-actions">
+                    <span class="bag-qty-value">Qty: ${item.quantity}</span>
+                    <button class="bag-remove-btn" data-id="${item.id}">Remove</button>
+                </div>
+            </div>
+        </div>
+    `).join("");
+
+    container.innerHTML = `
+        <div class="bag-layout">
+            <div class="bag-items">${itemsHTML}</div>
+            <aside class="bag-summary">
+                <h2 class="bag-summary-heading">Order Summary</h2>
+                <div class="bag-summary-row bag-summary-total">
+                    <span>Total</span>
+                    <span>$${subtotal.toFixed(2)}</span>
+                </div>
+                <button id="clear-cart-btn" class="bag-continue-link">Clear Bag</button>
+                <a href="/products" class="bag-continue-link">← Continue Shopping</a>
+            </aside>
+        </div>
+    `;
+
+    // Wire up remove buttons
+    container.querySelectorAll(".bag-remove-btn").forEach(btn => {
+        btn.addEventListener("click", () => removeFromCart(btn.dataset.id));
+    });
+
+    document.getElementById("clear-cart-btn")
+        .addEventListener("click", clearCart);
+}
+
+// ---- Mutations ----
+async function addToCart(productId) {
+    try {
+        const res = await fetch(`${CART_API}/items`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ productId }),
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            console.error(err.error);
+            return;
+        }
+
+        loadCart(); // re-fetch and re-render
+    } catch (err) {
+        console.error("Error adding to cart:", err);
+    }
+}
+
+async function removeFromCart(productId) {
+    try {
+        const res = await fetch(`${CART_API}/items/${productId}`, {
+            method: "DELETE",
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            console.error(err.error);
+            return;
+        }
+
+        loadCart();
+    } catch (err) {
+        console.error("Error removing item:", err);
+    }
+}
+
+async function clearCart() {
+    try {
+        await fetch(`${CART_API}/clear`, { method: "POST" });
+        loadCart();
+    } catch (err) {
+        console.error("Error clearing cart:", err);
+    }
+}
+
+export function wireAddToCartButtons() {
+    document.querySelectorAll(".btn-add-cart").forEach(btn => {
+        btn.addEventListener("click", () => addToCart(btn.dataset.productId));
+    });
+}

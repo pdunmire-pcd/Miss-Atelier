@@ -1,3 +1,5 @@
+import { wireAddToCartButtons } from "./cart";
+
 const API_URL = "/api/products";
 
 // Grab search button and search input
@@ -59,6 +61,7 @@ function reloadProducts(products) {
                 <p>${product.category}</p>
                 <p>${product.description}</p>
                 <a href="/products/${product.id}">View Product</a>
+                <button class="btn-add-cart" data-product-id="${product.id}">Add to Cart</button>
             </div>`
         );
     });
@@ -71,4 +74,5 @@ function reloadProducts(products) {
       container.style.display = "block";
     };
 
+     wireAddToCartButtons();
 }

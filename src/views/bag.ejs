@@ -11,104 +11,20 @@
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/bag.css">
+
+    <!-- JAVASCRIPT -->
+    <script src="/js/cart.js" defer></script>
+    
 </head>
 <body class="site-container">
     <%- include('partials/nav') %>
 
-    <main>
+        <main>
         <div class="bag-page">
-
             <h1 class="bag-heading">Your Bag</h1>
 
-            <% if (typeof cartItems !== 'undefined' && cartItems && cartItems.length > 0) { %>
-
-                <div class="bag-layout">
-
-                    <!-- Left: Item List -->
-                    <div class="bag-items">
-                        <% cartItems.forEach(item => { %>
-                        <div class="bag-item">
-                            <div class="bag-item-image-wrap">
-                                <img
-                                    src="<%= item.image_url || '/images/default.webp' %>"
-                                    alt="<%= item.name %>"
-                                    class="bag-item-image"
-                                />
-                            </div>
-
-                            <div class="bag-item-details">
-                                <div class="bag-item-meta">
-                                    <span class="bag-item-category"><%= item.category %></span>
-                                    <h2 class="bag-item-name"><%= item.name %></h2>
-                                    <p class="bag-item-price">$<%= parseFloat(item.price).toFixed(2) %></p>
-                                </div>
-
-                                <div class="bag-item-actions">
-                                    <div class="bag-qty-control">
-                                        <button
-                                            class="bag-qty-btn"
-                                            aria-label="Decrease quantity"
-                                            data-id="<%= item.id %>"
-                                            data-action="decrease"
-                                        >−</button>
-                                        <span class="bag-qty-value"><%= item.quantity %></span>
-                                        <button
-                                            class="bag-qty-btn"
-                                            aria-label="Increase quantity"
-                                            data-id="<%= item.id %>"
-                                            data-action="increase"
-                                        >+</button>
-                                    </div>
-
-                                    <form action="/bag/items/<%= item.id %>?_method=DELETE" method="POST">
-                                        <button type="submit" class="bag-remove-btn">Remove</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <% }) %>
-                    </div>
-
-                    <!-- Right: Order Summary -->
-                    <aside class="bag-summary">
-                        <h2 class="bag-summary-heading">Order Summary</h2>
-
-                        <div class="bag-summary-rows">
-                            <div class="bag-summary-row">
-                                <span>Subtotal</span>
-                                <span>$<%= subtotal.toFixed(2) %></span>
-                            </div>
-                            <div class="bag-summary-row">
-                                <span>Shipping</span>
-                                <span class="bag-summary-note">Calculated at checkout</span>
-                            </div>
-                        </div>
-
-                        <div class="bag-summary-divider"></div>
-
-                        <div class="bag-summary-row bag-summary-total">
-                            <span>Total</span>
-                            <span>$<%= subtotal.toFixed(2) %></span>
-                        </div>
-
-                        <a href="/checkout" class="btn-checkout">Proceed to Checkout</a>
-
-                        <a href="/products" class="bag-continue-link">← Continue Shopping</a>
-                    </aside>
-
-                </div>
-
-            <% } else { %>
-
-                <!-- Empty State -->
-                <div class="bag-empty">
-                    <p class="bag-empty-message">Your bag is empty.</p>
-                    <p class="bag-empty-sub">Add a piece to begin.</p>
-                    <a href="/products" class="btn-shop">Shop the Collection</a>
-                </div>
-
-            <% } %>
-
+            <!-- Populated by /js/cart.js on load -->
+            <div id="bag-content"></div>
         </div>
     </main>
 
