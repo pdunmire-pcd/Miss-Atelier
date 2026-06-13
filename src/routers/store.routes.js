@@ -39,10 +39,6 @@ router.get("/bag", (req, res) => {
     res.render("bag", { title: "Shopping Bag", cartItems: cart, subtotal });
 });
 
-// Adding + removing items from bag
-router.post('/bag/add', bagController.addToBag);
-router.post('/bag/remove/:id', bagController.removeFromBag);
-
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });
 });
