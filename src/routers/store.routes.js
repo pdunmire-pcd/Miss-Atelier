@@ -33,11 +33,10 @@ router.get("/search", (req, res) => {
 });
 
 // Accessing bag
-router.get("/bag", (req, res) => {
-    const cart = req.session.cart || [];
-    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    res.render("bag", { title: "Shopping Bag", cartItems: cart, subtotal });
-});
+router.get("/bag", bagController.getBagPage);
+router.post('/bag/add', bagController.addItemSSR);
+router.post('/bag/remove/:id', bagController.removeItemSSR);
+
 
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });

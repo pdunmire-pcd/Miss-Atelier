@@ -1,25 +1,11 @@
 import { getProductById } from "../services/store.service.js";
 
-// GET /api/cart
-export const getCart = (req, res) => {
-    const cart = req.session.cart || [];
-    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    res.status(200).json({ cart, subtotal });
-};
-
-// POST /api/cart/items
-export const addItem = async (req, res) => {
+// SSR shim: POST /bag/add (form submit from product-detail.ejs)
+export const addItemSSR = async (req, res) => {
     const { productId } = req.body;
-
-    if (!productId) {
-        return res.status(400).json({ error: "productId is required" });
-    }
-
     const product = await getProductById(productId);
 
-    if (!product) {
-        return res.status(404).json({ error: "Product not found" });
-    }
+    if (!product) return res.redirect('/bag');
 
     if (!req.session.cart) req.session.cart = [];
 
@@ -38,24 +24,23 @@ export const addItem = async (req, res) => {
         });
     }
 
-    res.status(200).json({ message: "Item added", cart: req.session.cart });
+    return res.redirect('/bag');
 };
 
-// DELETE /api/cart/items/:productId
-export const removeItem = (req, res) => {
-    const id = parseInt(req.params.productId);
+// SSR shim: POST /bag/remove/:id (form submit from bag.ejs)
+export const removeItemSSR = (req, res) => {
+    const id = parseInt(req.params.id);
 
-    if (!req.session.cart) {
-        return res.status(400).json({ error: "Cart is empty" });
+    if (req.session.cart) {
+        req.session.cart = req.session.cart.filter(item => item.id !== id);
     }
 
-    req.session.cart = req.session.cart.filter(item => item.id !== id);
-
-    res.status(200).json({ message: "Item removed", cart: req.session.cart });
+    return res.redirect('/bag');
 };
 
-// POST /api/cart/clear
-export const clearCart = (req, res) => {
-    req.session.cart = [];
-    res.status(200).json({ message: "Cart cleared" });
+// GET /bag (SSR page)
+export const getBagPage = (req, res) => {
+    const cart = req.session.cart || [];
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    return res.render("bag", { title: "Shopping Bag", cartItems: cart, subtotal });
 };
