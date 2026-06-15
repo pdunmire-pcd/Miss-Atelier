@@ -152,3 +152,14 @@ function showCartMessage(message) {
         toast.classList.remove("show");
     }, 2000);
 }
+
+async function loadBagCount() {
+    try {
+        const res = await fetch(CART_API);
+        const data = await res.json();
+
+        updateBagCount(data.cart || []);
+    } catch (err) {
+        console.error("Error loading bag count:", err);
+    }
+}
