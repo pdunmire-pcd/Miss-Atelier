@@ -106,12 +106,16 @@ async function removeFromCart(productId) {
         const res = await fetch(`${CART_API}/items/${productId}`, {
             method: "DELETE",
         });
+
+        const data = await res.json();
  
-        if (!res.ok) {
-            const err = await res.json();
-            console.error(err.error);
+         if (!res.ok) {
+            console.error(data.error);
             return;
         }
+
+        updateBagCount(data.cart);
+        showCartMessage(data.message || "Item removed");
  
         loadCart();
     } catch (err) {
@@ -163,3 +167,4 @@ async function loadBagCount() {
         console.error("Error loading bag count:", err);
     }
 }
+
