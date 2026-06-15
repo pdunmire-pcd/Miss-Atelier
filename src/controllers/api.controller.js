@@ -66,6 +66,36 @@ export const removeItem = (req, res) => {
 // POST /api/cart/clear
 export const clearCart = (req, res) => {
     req.session.cart = [];
-    return res.status(200).json({ message: "Cart cleared" });
+    return res.status(200).json({ message: "Cart cleared" ,cart: req.session.cart,
+        subtotal: 0});
 };
 
+// PATCH /api/cart/items/:productId
+export const updateQuantity = (req, res) => {
+    const id = parseInt(req.params.productId);
+    const { change } = req.body; // +1 or -1
+
+    if (!req.session.cart) {
+        return res.status(400).json({ error: "Cart is empty" });
+    }
+
+    const item = req.session.cart.find(item => item.id === id);
+
+    if (!item) {
+        return res.status(404).json({ error: "Item not found" });
+    }
+
+    item.quantity += change;
+
+    if (item.quantity <= 0) {
+        req.session.cart = req.session.cart.filter(item => item.id !== id);
+    }
+
+    const subtotal = req.session.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    return res.status(200).json({
+        message: "Quantity updated",
+        cart: req.session.cart,
+        subtotal
+    });
+};

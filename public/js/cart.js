@@ -22,7 +22,7 @@ async function loadCart() {
  
 function renderBag({ cart, subtotal }) {
     const container = document.getElementById("bag-content");
- 
+
     if (!cart || cart.length === 0) {
         container.innerHTML = `
             <div class="bag-empty">
@@ -33,26 +33,31 @@ function renderBag({ cart, subtotal }) {
         `;
         return;
     }
- 
+
     const itemsHTML = cart.map(item => `
         <div class="bag-item" data-id="${item.id}">
             <div class="bag-item-image-wrap">
                 <img src="${item.image_url}" alt="${item.name}" class="bag-item-image">
             </div>
+
             <div class="bag-item-details">
                 <div class="bag-item-meta">
                     <span class="bag-item-category">${item.category}</span>
                     <h2 class="bag-item-name">${item.name}</h2>
                     <p class="bag-item-price">$${item.price.toFixed(2)}</p>
                 </div>
-                <div class="bag-item-actions">
-                    <span class="bag-qty-value">Qty: ${item.quantity}</span>
-                    <button class="bag-remove-btn" data-id="${item.id}">Remove</button>
+
+                <div class="bag-qty-controls">
+                    <button class="bag-qty-minus" data-id="${item.id}">-</button>
+                    <span class="bag-qty-value">${item.quantity}</span>
+                    <button class="bag-qty-plus" data-id="${item.id}">+</button>
                 </div>
+
+                <button class="bag-remove-btn" data-id="${item.id}">Remove</button>
             </div>
         </div>
     `).join("");
- 
+
     container.innerHTML = `
         <div class="bag-layout">
             <div class="bag-items">${itemsHTML}</div>
@@ -66,11 +71,24 @@ function renderBag({ cart, subtotal }) {
             </aside>
         </div>
     `;
- 
+
+    attachBagListeners(container);
+}
+
+function attachBagListeners(container) {
     container.querySelectorAll(".bag-remove-btn").forEach(btn => {
         btn.addEventListener("click", () => removeFromCart(btn.dataset.id));
     });
+
+    container.querySelectorAll(".bag-qty-plus").forEach(btn => {
+        btn.addEventListener("click", () => updateQuantity(btn.dataset.id, 1));
+    });
+
+    container.querySelectorAll(".bag-qty-minus").forEach(btn => {
+        btn.addEventListener("click", () => updateQuantity(btn.dataset.id, -1));
+    });
 }
+
  
 // ---- Mutations ----
 async function addToCart(productId) {
@@ -120,6 +138,29 @@ async function removeFromCart(productId) {
         loadCart();
     } catch (err) {
         console.error("Error removing item:", err);
+    }
+}
+
+async function updateQuantity(productId, change) {
+    try {
+        const res = await fetch(`${CART_API}/items/${productId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ change }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            console.error(data.error);
+            return;
+        }
+
+        renderBag(data);
+        updateBagCount(data.cart);
+        showCartMessage(data.message || "Quantity updated");
+    } catch (err) {
+        console.error("Error updating quantity:", err);
     }
 }
  
