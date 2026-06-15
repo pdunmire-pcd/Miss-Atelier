@@ -2,7 +2,8 @@ const CART_API = "/api/cart";
  
 document.addEventListener("DOMContentLoaded", () => {
     wireAddToCartButtons();
- 
+    loadBagCount();
+
     if (document.getElementById("bag-content")) {
         loadCart();
     }
@@ -74,19 +75,24 @@ function renderBag({ cart, subtotal }) {
 // ---- Mutations ----
 async function addToCart(productId) {
     console.log("Adding product:", productId);
+
     try {
         const res = await fetch(`${CART_API}/items`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ productId }),
         });
- 
+
+        const data = await res.json();
+
         if (!res.ok) {
-            const err = await res.json();
-            console.error(err.error);
+            console.error(data.error);
             return;
         }
- 
+
+        updateBagCount(data.cart);
+        showCartMessage(data.message || "Added to cart!");
+
         if (document.getElementById("bag-content")) {
             loadCart();
         }
@@ -118,4 +124,31 @@ function wireAddToCartButtons() {
     document.querySelectorAll(".btn-add-cart").forEach(btn => {
         btn.addEventListener("click", () => addToCart(btn.dataset.productId));
     });
+}
+
+function updateBagCount(cart) {
+    const bagCount = document.getElementById("bag-count");
+
+    if (!bagCount) return;
+
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    bagCount.textContent = totalItems;
+}
+
+function showCartMessage(message) {
+    let toast = document.getElementById("cart-toast");
+
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "cart-toast";
+        toast.className = "cart-toast";
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = message || "Added to cart!";
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 }
