@@ -2,6 +2,7 @@ import express from 'express';
 import defaultRouter from './routers/store.routes.js';
 import apiRouter from './routers/api.routes.js';
 import session from 'express-session';
+import methodOverride from 'method-override';
 
 //configure Express.js app
 const app = express();
@@ -23,6 +24,9 @@ app.use(express.static('public'));
 app.set('json spaces', 2);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//method override for RESTful 
+app.use(methodOverride('_method'));
 
 //routers
 app.use("/", defaultRouter);

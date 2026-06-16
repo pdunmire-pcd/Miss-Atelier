@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head') %>
-<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/bag.css">
+
+    <!-- JAVASCRIPT -->
+    <script src="/js/cart.js" defer></script>
+    
+</head>
+<body class="site-container">
     <%- include('partials/nav') %>
 
-    <main>
-        <h1>Shopping Bag</h1>
+        <main>
+        <div class="bag-page">
+            <h1 class="bag-heading">Your Bag</h1>
 
-        <p>Your selected items will appear here.</p>
+            <!-- Populated by /js/cart.js on load -->
+            <div id="bag-content"></div>
+        </div>
     </main>
 
     <%- include('partials/footer') %>

@@ -8,31 +8,34 @@ router.get("/", storeController.getStorePage);
 
 // Existing users login 
 router.get("/login", authcontroller.getLogin);
+router.post('/login', authcontroller.postLogin);
 
-router.get("/products", storeController.getProductsPage);
-router.get("/products/:id", storeController.getProductDetailPage);
+// Logout
+router.post('/logout', authcontroller.logout);
 
 // Create a new account
 router.get("/register", authcontroller.getRegister);
+router.post('/register', authcontroller.postRegister);
 
+// Account page
+router.get("/account", authcontroller.getAccount);
+
+// About page
 router.get("/about", storeController.getAboutPage);
+
+// Accessing Products
+router.get("/products", storeController.getProductsPage);
+router.get("/products/:id", storeController.getProductDetailPage);
 
 router.get("/search", (req, res) => {
     res.render("search", { title: "Search" });
 });
 
-router.get("/account", authcontroller.getAccount);
-
-router.get("/bag", (req, res) => {
-    res.render("bag", { title: "Shopping Bag" });
-});
+// Accessing cart
+router.get("/bag", storeController.getBagPage);
 
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });
 });
-
-router.post('/register', authcontroller.postRegister);
-router.post('/login', authcontroller.postLogin);
-router.post('/logout', authcontroller.logout);
 
 export default router;
