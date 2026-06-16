@@ -146,32 +146,34 @@ Router → Controller → Service → Repository (Model) → MySQL
 
 ### Store pages (SSR)
 
-| Method | Path            | Description                     |
-| ------ | --------------- | ------------------------------- |
-| GET    | `/`             | Home / landing page             |
-| GET    | `/products`     | Product listing (filter + sort) |
-| GET    | `/products/:id` | Product detail page             |
-| GET    | `/about`        | About page                      |
-| GET    | `/search`       | Search page                     |
-| GET    | `/contact`      | Contact page                    |
-| GET    | `/login`        | Login page                      |
-| POST   | `/login`        | Authenticate user, set session  |
-| GET    | `/register`     | Create account page             |
-| POST   | `/register`     | Hash password, create user      |
-| POST   | `/logout`       | Destroy session, redirect to /  |
-| GET    | `/account`      | Account dashboard               |
-| GET    | `/bag`          | Shopping bag                    |
-| GET    | `/bag`          | Shopping bag                    |
+| Method | Path            | Access    | Description                     |
+| ------ | --------------- | --------- | ------------------------------- |
+| GET    | `/`             | Public    | Home / landing page             |
+| GET    | `/login`        | Public    | Login page                      |
+| POST   | `/login`        | Public    | Authenticate user, set session  |
+| GET    | `/register`     | Public    | Create account page             |
+| POST   | `/register`     | Public    | Hash password, create user      |
+| POST   | `/logout`       | Public    | Destroy session, redirect to /  |
+| GET    | `/about`        | Public    | About page                      |
+| GET    | `/search`       | Public    | Search page                     |
+| GET    | `/contact`      | Public    | Contact page                    |
+| GET    | `/products`     | Protected | Product listing (filter + sort) |
+| GET    | `/products/:id` | Protected | Product detail page             |
+| GET    | `/account`      | Protected | Account dashboard               |
+| GET    | `/bag`          | Protected | Shopping bag                    |
 
 ### API
 
-| Method | Path                     | Description              |
-| ------ | ------------------------ | ------------------------ |
-| GET    | `/products`              | Returns products as JSON |
-| GET    | `/cart`                  | Returns items in cart    |
-| POST   | `/cart/items`            | Adds item to cart        |
-| DELETE | `/cart/items/:productId` | Deletes items from cart  |
-| POST   | `/cart/clear`            | Clears items from cart   |
+All API routes are mounted under `/api` and are **protected**.
+
+| Method | Path                          | Access    | Description              |
+| ------ | ----------------------------- | --------- | ------------------------ |
+| GET    | `/api/products`               | Protected | Returns products as JSON |
+| GET    | `/api/cart`                   | Protected | Returns items in cart    |
+| POST   | `/api/cart/items`             | Protected | Adds item to cart        |
+| DELETE | `/api/cart/items/:productId`  | Protected | Deletes item from cart   |
+| PATCH  | `/api/cart/items/:productId`  | Protected | Updates item quantity    |
+| POST   | `/api/cart/clear`             | Protected | Clears items from cart   |
 
 **Query parameters** (supported on `/products` and `/api/products`):
 
@@ -206,6 +208,38 @@ Session-based authentication is implemented using `express-session` and `bcrypt`
 2. User is redirected to `/`
 
 Passwords are hashed using bcrypt with 10 salt rounds. Sessions are signed with `SESSION_SECRET` from the environment to prevent cookie tampering.
+
+---
+
+## Route Protection (Authorization)
+
+Authorization is enforced by a reusable middleware, `requireAuth`, defined in
+[`src/middleware/requireAuth.js`](src/middleware/requireAuth.js). It checks
+`req.session.userId` and responds based on the type of route:
+
+- **SSR pages** — unauthenticated users are redirected to `/login`.
+- **API routes** (any path starting with `/api`) — return `401 Unauthorized`
+  as JSON.
+
+It is applied directly to the protected SSR routes (`/products`,
+`/products/:id`) and mounted on the entire API router (`router.use(requireAuth)`),
+so every `/api/*` endpoint — including all cart endpoints — is protected.
+
+**Public routes** (no login required):
+
+- `/` (landing page)
+- `/login`, `POST /login`
+- `/register`, `POST /register`
+- `POST /logout`
+- `/about`, `/search`, `/contact`
+
+**Protected routes** (login required):
+
+- `/products`
+- `/products/:id`
+- `/account`
+- `/bag`
+- All `/api/*` endpoints (including every cart endpoint)
 
 ---
 
