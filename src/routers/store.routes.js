@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as storeController from  '../controllers/store.controller.js';
 import * as authcontroller from '../controllers/auth.controller.js';
+import requireAuth from '../middleware/requireAuth.js';
 
 const router = Router();
 
@@ -23,9 +24,9 @@ router.get("/account", authcontroller.getAccount);
 // About page
 router.get("/about", storeController.getAboutPage);
 
-// Accessing Products
-router.get("/products", storeController.getProductsPage);
-router.get("/products/:id", storeController.getProductDetailPage);
+// Accessing Products (protected — login required)
+router.get("/products", requireAuth, storeController.getProductsPage);
+router.get("/products/:id", requireAuth, storeController.getProductDetailPage);
 
 router.get("/search", (req, res) => {
     res.render("search", { title: "Search" });
