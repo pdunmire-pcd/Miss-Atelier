@@ -1,6 +1,10 @@
 import { getProducts, getProductById } from "../services/store.service.js";
 
-export function getStorePage(req, res) {
+export async function getStorePage(req, res) {
+  const FEATURED_PRODUCT_ID = 15; // Linen-Cotton Openwork Top
+
+  const product = await getProductById(FEATURED_PRODUCT_ID);
+
   res.render("store", {
     title: "Miss Atelier",
     heroLine1: "Miss Atelier",
@@ -27,12 +31,12 @@ export function getStorePage(req, res) {
       text: "Miss Atelier offers elegant ready-to-wear pieces, crochet patterns, yarn, and sewing notions for people who love timeless handmade fashion.",
     },
     featuredProduct: {
-      image: "/images/featured-product.jpg",
-      imageAlt: "Placeholder product image",
-      name: "Ivory Crochet Cardigan",
-      description:
-        "A soft cream cardigan designed for layering and adding a handcrafted touch to everyday outfits.",
-      price: "$48.00",
+      id: product.id,
+      image: product.image_path,
+      imageAlt: product.product_name,
+      name: product.product_name,
+      description: product.description,
+      price: `$${Number(product.price).toFixed(2)}`,
     },
   });
 }
