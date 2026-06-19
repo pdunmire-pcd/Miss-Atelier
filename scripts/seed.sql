@@ -31,7 +31,7 @@ INSERT INTO products (product_name, price, description, category, image_path) VA
 ('Merino Polo Shirt', 360.00, 'A fine-gauge merino polo with a classic two-button placket reinterpreted in a modern, slightly elongated hem.', 'Tops', '/images/merino-polo-shirt.png'),
 ('Textured Bouclé Cardigan', 590.00, 'A hip-length bouclé cardigan with patch pockets and a single-button closure, offering rich texture in a wearable silhouette.', 'Cardigans', '/images/textured-boucle-cardigan.png'),
 ('Cashmere Fingerless Mittens', 180.00, 'Elegant fingerless mittens in ribbed cashmere with a convertible mitten flap secured by a small horn button.', 'Accessories', '/images/cashmere-fingerless-mittens.png'),
-('Sheer Knit Cover-Up Dress', 520.00, 'A semi-sheer fine-knit cover-up dress in a linen-viscose blend with a tiered hem and drawstring waist.', 'Dresses', '/images/chunky-cable-knit-fisherman-sweater.png'),
+('Sheer Knit Cover-Up Dress', 520.00, 'A semi-sheer fine-knit cover-up dress in a linen-viscose blend with a tiered hem and drawstring waist.', 'Dresses', '/images/sheer-knit-cover-up-dress.png'),
 ('Striped Breton Merino Sweater', 415.00, 'A refined take on the classic Breton stripe in extra-fine merino, with a boat neck and a relaxed yet polished fit.', 'Sweaters', '/images/striped-breton-merino-sweater.png'),
 ('Wool Blend Knit Shorts', 380.00, 'Tailored knit shorts in a mid-gauge wool blend with a wide waistband and a clean A-line shape for a chic warm-weather look.', 'Bottoms', '/images/wool-blend-knit-shorts.png'),
 ('Cashmere Twinset', 890.00, 'A timeless cashmere twinset pairing a short-sleeve shell with a button-front cardigan in a harmonious ribbed fine gauge.', 'Sets', '/images/cashmere-twinset.png'),
