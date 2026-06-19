@@ -19,7 +19,7 @@ router.get("/register", authcontroller.getRegister);
 router.post('/register', authcontroller.postRegister);
 
 // Account page
-router.get("/account", authcontroller.getAccount);
+router.get("/account", requireAuth, authcontroller.getAccount);
 
 // About page
 router.get("/about", storeController.getAboutPage);
@@ -33,7 +33,7 @@ router.get("/search", (req, res) => {
 });
 
 // Accessing cart
-router.get("/bag", storeController.getBagPage);
+router.get("/bag", requireAuth, storeController.getBagPage);
 
 router.get("/contact", (req, res) => {
     res.render("contact", { title: "Contact Us" });
