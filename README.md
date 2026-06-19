@@ -243,6 +243,16 @@ so every `/api/*` endpoint — including all cart endpoints — is protected.
 
 ---
 
+## Session-Based Shopping Cart
+
+The shopping cart is stored in the user's session (`req.session.cart`), so a separate database table isn't needed. Each logged-in user has their own cart, and it stays available while they're signed in and browsing the site.
+
+The cart is updated through protected API routes using `fetch()`. When a user adds an item, removes an item, clears the cart, or changes the quantity, the server updates the session and returns the latest cart data. The page then updates the cart without needing a full page refresh.
+
+When the user logs out, the session is destroyed, which also clears the shopping cart.
+
+---
+
 ## License
 
 This project was created for educational purposes as part of the SDEV 333 capstone
